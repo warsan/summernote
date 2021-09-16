@@ -10,7 +10,7 @@ class TooltipUI {
       placement: 'bottom',
     }, options);
 
-    // create tooltip node
+    // создать узел всплывающей подсказки
     this.$tooltip = $([
       '<div class="note-tooltip">',
         '<div class="note-tooltip-arrow"></div>',

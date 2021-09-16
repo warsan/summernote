@@ -2,8 +2,8 @@
   position: absolute;
   z-index: $zindex-tooltip;
   display: block;
-  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
-  // So reset our font and text properties to avoid inheriting weird values.
+  // Наш родительский элемент может быть произвольным, поскольку всплывающие подсказки по умолчанию вставляются в качестве дочернего элемента своего целевого элемента.
+  // Поэтому сбросьте наши свойства шрифта и текста, чтобы избежать наследования странных значений.
   font-size: 13px;
 
   transition: opacity .15s;

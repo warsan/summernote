@@ -91,9 +91,9 @@
 }
 
 
-// Scale up the modal
+// Увеличить модальность
 @media (min-width: 768px) {
-  // Automatically set modal's width for larger viewports
+  // Автоматическая установка ширины модала для больших экранов просмотра
   .note-modal-content {
     width: 600px;
     margin: 30px auto;

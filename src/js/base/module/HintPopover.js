@@ -240,10 +240,10 @@ export default class HintPopover {
               this.createGroup(idx, keyword).appendTo(this.$content);
             }
           });
-          // select first .note-hint-item
+          // выберите первый .note-hint-item
           this.$content.find('.note-hint-item:first').addClass('active');
 
-          // set position for popover after group is created
+          // установка позиции для всплывающего окна после создания группы
           if (this.direction === 'top') {
             this.$popover.css({
               left: bnd.left,

@@ -69,13 +69,13 @@ export default class Handle {
             this.context.invoke('editor.afterCommand');
           });
 
-        if (!$target.data('ratio')) { // original ratio.
+        if (!$target.data('ratio')) { // исходное соотношение.
           $target.data('ratio', $target.height() / $target.width());
         }
       }
     });
 
-    // Listen for scrolling on the handle overlay.
+    // Прослушивайте прокрутку на накладке ручки.
     this.$handle.on('wheel', (e) => {
       e.preventDefault();
       this.update();
@@ -104,7 +104,7 @@ export default class Handle {
         top: position.top + parseInt($image.css('marginTop'), 10),
       };
 
-      // exclude margin
+      // исключить маржу
       const imageSize = {
         w: $image.outerWidth(false),
         h: $image.outerHeight(false),
@@ -116,7 +116,7 @@ export default class Handle {
         top: pos.top,
         width: imageSize.w,
         height: imageSize.h,
-      }).data('target', $image); // save current image element.
+      }).data('target', $image); // сохранить текущий элемент изображения.
 
       const origImageObj = new Image();
       origImageObj.src = $image.attr('src');
@@ -132,7 +132,7 @@ export default class Handle {
   }
 
   /**
-   * hide
+   * скрыть
    *
    * @param {jQuery} $handle
    */

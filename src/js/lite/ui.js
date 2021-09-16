@@ -189,7 +189,7 @@ const tableMoveHandler = function(event, col, row) {
   const $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
 
   let posOffset;
-  // HTML5 with jQuery - e.offsetX is undefined in Firefox
+  // HTML5 с jQuery - e.offsetX не определён в Firefox
   if (event.offsetX === undefined) {
     const posCatcher = $(event.target).offset();
     posOffset = {
@@ -585,7 +585,7 @@ const ui = function(editorOptions) {
     },
 
     /**
-     * get popover content area
+     * получить область содержимого всплывающего окна
      *
      * @param $popover
      * @returns {*}
@@ -595,7 +595,7 @@ const ui = function(editorOptions) {
     },
 
     /**
-     * get dialog's body area
+     * получить площадь тела диалога
      *
      * @param $dialog
      * @returns {*}
@@ -645,7 +645,7 @@ const ui = function(editorOptions) {
     removeLayout: function($note, layoutInfo) {
       $note.html(layoutInfo.editable.html());
       layoutInfo.editor.remove();
-      $note.off('summernote'); // remove summernote custom event
+      $note.off('summernote'); // удалить пользовательское событие summernote
       $note.show();
     },
   };

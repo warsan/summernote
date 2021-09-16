@@ -51,7 +51,7 @@ export default class Editor {
     this.context.memo('help.insertHorizontalRule', this.lang.help.insertHorizontalRule);
     this.context.memo('help.fontName', this.lang.help.fontName);
 
-    // native commands(with execCommand), generate function for execCommand
+    // собственные команды (с execCommand), генерировать функцию для execCommand
     const commands = [
       'bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript',
       'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull',
@@ -114,7 +114,7 @@ export default class Editor {
 
     /**
      * insertNode
-     * insert node
+     * вставить узел
      * @param {Node} node
      */
     this.insertNode = this.wrapCommand((node) => {
@@ -140,7 +140,7 @@ export default class Editor {
     });
 
     /**
-     * paste HTML
+     * вставить HTML
      * @param {String} markup
      */
     this.pasteHTML = this.wrapCommand((markup) => {
@@ -167,7 +167,7 @@ export default class Editor {
     });
 
     /**
-     * insert horizontal rule
+     * вставить горизонтальное правило
      */
     this.insertHorizontalRule = this.wrapCommand(() => {
       const hrNode = this.getLastRange().insertNode(dom.create('HR'));
@@ -187,7 +187,7 @@ export default class Editor {
     });
 
     /**
-     * create link (command)
+     * создать ссылку (команда)
      *
      * @param {Object} linkInfo
      */
@@ -203,7 +203,7 @@ export default class Editor {
       }
       const isTextChanged = rng.toString() !== linkText;
 
-      // handle spaced urls from input
+      // обрабатывать разнесенные ссылки из ввода
       if (typeof linkUrl === 'string') {
         linkUrl = linkUrl.trim();
       }
@@ -211,7 +211,7 @@ export default class Editor {
       if (this.options.onCreateLink) {
         linkUrl = this.options.onCreateLink(linkUrl);
       } else if (checkProtocol) {
-        // if url doesn't have any protocol and not even a relative or a label, use http:// as default
+        // если url не имеет никакого протокола и даже не является относительным или меткой, используйте http:// по умолчанию
         linkUrl = /^([A-Za-z][A-Za-z0-9+-.]*\:|#|\/)/.test(linkUrl)
           ? linkUrl : this.options.defaultProtocol + linkUrl;
       }
@@ -244,11 +244,11 @@ export default class Editor {
     });
 
     /**
-     * setting color
+     * цвет установки
      *
-     * @param {Object} sObjColor  color code
-     * @param {String} sObjColor.foreColor foreground color
-     * @param {String} sObjColor.backColor background color
+     * @param {Object} sObjColor  цветовой код
+     * @param {String} sObjColor.foreColor цвет переднего плана
+     * @param {String} sObjColor.backColor цвет фона
      */
     this.color = this.wrapCommand((colorInfo) => {
       const foreColor = colorInfo.foreColor;
@@ -259,18 +259,18 @@ export default class Editor {
     });
 
     /**
-     * Set foreground color
+     * Установите цвет переднего плана
      *
-     * @param {String} colorCode foreground color code
+     * @param {String} colorCode код цвета переднего плана
      */
     this.foreColor = this.wrapCommand((colorInfo) => {
       document.execCommand('foreColor', false, colorInfo);
     });
 
     /**
-     * insert Table
+     * вставить таблицу
      *
-     * @param {String} dimension of table (ex : "5x5")
+     * @param {String} dimension стол (ex : "5x5")
      */
     this.insertTable = this.wrapCommand((dim) => {
       const dimension = dim.split('x');
@@ -280,7 +280,7 @@ export default class Editor {
     });
 
     /**
-     * remove media object and Figure Elements if media object is img with Figure.
+     * удалить медиаобъект и элементы рисунка, если медиаобъект является img с рисунком.
      */
     this.removeMedia = this.wrapCommand(() => {
       let $target = $(this.restoreTarget()).parent();
@@ -293,7 +293,7 @@ export default class Editor {
     });
 
     /**
-     * float me
+     * плавать мне
      *
      * @param {String} value
      */
@@ -305,7 +305,7 @@ export default class Editor {
     });
 
     /**
-     * resize overlay element
+     * изменить размер элемента наложения
      * @param {String} value
      */
     this.resize = this.wrapCommand((value) => {
@@ -323,14 +323,14 @@ export default class Editor {
   }
 
   initialize() {
-    // bind custom events
+    // привязка пользовательских событий
     this.$editable.on('keydown', (event) => {
       if (event.keyCode === key.code.ENTER) {
         this.context.triggerEvent('enter', event);
       }
       this.context.triggerEvent('keydown', event);
 
-      // keep a snapshot to limit text on input event
+      // сохранять снимок для ограничения текста при событии ввода
       this.snapshot = this.history.makeSnapshot();
       this.hasKeyShortCut = false;
       if (!event.isDefaultPrevented()) {
@@ -348,7 +348,7 @@ export default class Editor {
       }
       this.setLastRange();
 
-      // record undo in the key event except keyMap.
+      // отмена записи в событии ключа, кроме keyMap.
       if (this.options.recordEveryKeystroke) {
         if (this.hasKeyShortCut === false) {
           this.history.recordUndo();
@@ -451,7 +451,7 @@ export default class Editor {
     } else if (eventName) {
       if (this.context.invoke(eventName) !== false) {
         event.preventDefault();
-        // if keyMap action was invoked
+        // если было вызвано действие KeyMap
         return true;
       }
     } else if (key.isEdit(event.keyCode)) {
@@ -489,7 +489,7 @@ export default class Editor {
   }
 
   /**
-   * create range
+   * создать диапазон
    * @return {WrappedRange}
    */
   createRange() {
@@ -499,9 +499,9 @@ export default class Editor {
   }
 
   /**
-   * create a new range from the list of elements
+   * создать новый диапазон из списка элементов
    *
-   * @param {list} dom element list
+   * @param {list} dom список элементов
    * @return {WrappedRange}
    */
   createRangeFromList(lst) {
@@ -519,10 +519,10 @@ export default class Editor {
   }
 
   /**
-   * set the last range
+   * установить последний диапазон
    *
-   * if given rng is exist, set rng as the last range
-   * or create a new range at the end of the document
+   * если заданный rng существует, установить rng как последний диапазон
+   * или создать новый диапазон в конце документа
    *
    * @param {WrappedRange} rng
    */
@@ -539,10 +539,10 @@ export default class Editor {
   }
 
   /**
-   * get the last range
+   * получить последний диапазон
    *
-   * if there is a saved last range, return it
-   * or create a new range and return it
+   * если существует сохраненный последний диапазон, вернуть его
+   * или создать новый диапазон и вернуть его
    *
    * @return {WrappedRange}
    */
@@ -556,7 +556,7 @@ export default class Editor {
   /**
    * saveRange
    *
-   * save current range
+   * сохранить текущий диапазон
    *
    * @param {Boolean} [thenCollapse=false]
    */
@@ -569,7 +569,7 @@ export default class Editor {
   /**
    * restoreRange
    *
-   * restore lately range
+   * Нет данных (истекло время ожидания отправки данных).
    */
   restoreRange() {
     if (this.lastRange) {

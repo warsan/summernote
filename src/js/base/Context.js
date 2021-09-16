@@ -24,7 +24,7 @@ export default class Context {
   }
 
   /**
-   * create layout and initialize modules and other resources
+   * создание макета и инициализация модулей и других ресурсов
    */
   initialize() {
     this.layoutInfo = this.ui.createLayout(this.$note);
@@ -34,7 +34,7 @@ export default class Context {
   }
 
   /**
-   * destroy modules and other resources and remove layout
+   * уничтожать модули и другие ресурсы и удалять компоновку
    */
   destroy() {
     this._destroy();
@@ -43,7 +43,7 @@ export default class Context {
   }
 
   /**
-   * destory modules and other resources and initialize it again
+   * уничтожить модули и другие ресурсы и инициализировать его снова
    */
   reset() {
     const disabled = this.isDisabled();
@@ -57,12 +57,12 @@ export default class Context {
   }
 
   _initialize() {
-    // set own id
+    // установить собственный идентификатор
     this.options.id = func.uniqueId($.now());
-    // set default container for tooltips, popovers, and dialogs
+    // установить контейнер по умолчанию для всплывающих подсказок, всплывающих окон и диалоговых окон
     this.options.container = this.options.container || this.layoutInfo.editor;
 
-    // add optional buttons
+    // добавить дополнительные кнопки
     const buttons = $.extend({}, this.options.buttons);
     Object.keys(buttons).forEach((key) => {
       this.memo('button.' + key, buttons[key]);
@@ -70,7 +70,7 @@ export default class Context {
 
     const modules = $.extend({}, this.options.modules, $.summernote.plugins || {});
 
-    // add and initialize modules
+    // добавление и инициализация модулей
     Object.keys(modules).forEach((key) => {
       this.module(key, modules[key], true);
     });
@@ -81,7 +81,7 @@ export default class Context {
   }
 
   _destroy() {
-    // destroy modules with reversed order
+    // уничтожать модули в обратном порядке
     Object.keys(this.modules).reverse().forEach((key) => {
       this.removeModule(key);
     });
@@ -89,7 +89,7 @@ export default class Context {
     Object.keys(this.memos).forEach((key) => {
       this.removeMemo(key);
     });
-    // trigger custom onDestroy callback
+    // обратный вызов пользовательского триггера onDestroy
     this.triggerEvent('destroy', this);
   }
 
@@ -122,7 +122,7 @@ export default class Context {
   }
 
   disable() {
-    // close codeview if codeview is opend
+    // закрыть окно просмотра кода, если окно просмотра открыто
     if (this.invoke('codeview.isActivated')) {
       this.invoke('codeview.deactivate');
     }
@@ -151,12 +151,12 @@ export default class Context {
       return;
     }
 
-    // initialize module
+    // инициализировать модуль
     if (module.initialize) {
       module.initialize();
     }
 
-    // attach events
+    // прикреплять события
     if (module.events) {
       dom.attachEvents(this.$note, module.events);
     }
@@ -205,7 +205,7 @@ export default class Context {
   }
 
   /**
-   * Some buttons need to change their visual style immediately once they get pressed
+   * Некоторые кнопки должны немедленно менять свой визуальный стиль после нажатия на них
    */
   createInvokeHandlerAndUpdateState(namespace, value) {
     return (event) => {

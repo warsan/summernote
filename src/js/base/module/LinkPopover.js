@@ -51,7 +51,7 @@ export default class LinkPopover {
   }
 
   update() {
-    // Prevent focusing on editable when invoke('code') is executed
+    // Предотвращение фокусировки на редактируемом объекте при выполнении функции invoke('code')
     if (!this.context.invoke('editor.hasFocus')) {
       this.hide();
       return;

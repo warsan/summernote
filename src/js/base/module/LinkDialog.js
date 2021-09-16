@@ -68,14 +68,14 @@ export default class LinkDialog {
   }
 
   /**
-   * toggle update button
+   * переключение кнопки обновления
    */
   toggleLinkBtn($linkBtn, $linkText, $linkUrl) {
     this.ui.toggleBtn($linkBtn, $linkText.val() && $linkUrl.val());
   }
 
   /**
-   * Show link dialog and set event handlers on dialog controls.
+   * Показать диалог ссылок и установить обработчики событий для элементов управления диалога.
    *
    * @param {Object} linkInfo
    * @return {Promise}
@@ -93,21 +93,21 @@ export default class LinkDialog {
       this.ui.onDialogShown(this.$dialog, () => {
         this.context.triggerEvent('dialog.shown');
 
-        // If no url was given and given text is valid URL then copy that into URL Field
+        // Если url не был задан и заданный текст является действительным URL, то скопируйте его в поле URL
         if (!linkInfo.url && func.isValidUrl(linkInfo.text)) {
           linkInfo.url = linkInfo.text;
         }
 
         $linkText.on('input paste propertychange', () => {
-          // If linktext was modified by input events,
-          // cloning text from linkUrl will be stopped.
+          // Если текст ссылки был изменен событиями ввода,
+          // клонирование текста из linkUrl будет прекращено.
           linkInfo.text = $linkText.val();
           this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
         }).val(linkInfo.text);
 
         $linkUrl.on('input paste propertychange', () => {
-          // Display same text on `Text to display` as default
-          // when linktext has no text
+          // Отображение того же текста в `Текст для отображения` по умолчанию, 
+          // когда у текста ссылки нет текста
           if (!linkInfo.text) {
             $linkText.val($linkUrl.val());
           }

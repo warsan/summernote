@@ -47,7 +47,7 @@ export default class VideoDialog {
   }
 
   createVideoNode(url) {
-    // video url patterns(youtube, instagram, vimeo, dailymotion, youku, peertube, mp4, ogg, webm)
+    // шаблоны url видео (youtube, instagram, vimeo, dailymotion, youku, peertube, mp4, ogg, webm)
     const ytRegExp = /\/\/(?:(?:www|m)\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w|-]{11})(?:(?:[\?&]t=)(\S+))?$/;
     const ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
     const ytMatch = url.match(ytRegExp);
@@ -177,7 +177,7 @@ export default class VideoDialog {
         .attr('scrolling', 'no')
         .attr('allowtransparency', 'true');
     } else {
-      // this is not a known video link. Now what, Cat? Now what?
+      // это не известная ссылка на видео. И что теперь, Кэт? И что теперь?
       return false;
     }
 
@@ -190,15 +190,15 @@ export default class VideoDialog {
     const text = this.context.invoke('editor.getSelectedText');
     this.context.invoke('editor.saveRange');
     this.showVideoDialog(text).then((url) => {
-      // [workaround] hide dialog before restore range for IE range focus
+      // [обходной путь] скрытие диалогового окна перед восстановлением диапазона для фокуса диапазона в IE
       this.ui.hideDialog(this.$dialog);
       this.context.invoke('editor.restoreRange');
 
-      // build node
+      // узел сборки
       const $node = this.createVideoNode(url);
 
       if ($node) {
-        // insert video node
+        // вставить видеоузел
         this.context.invoke('editor.insertNode', $node);
       }
     }).fail(() => {
@@ -207,7 +207,7 @@ export default class VideoDialog {
   }
 
   /**
-   * show video dialog
+   * показать видеодиалог
    *
    * @param {jQuery} $dialog
    * @return {Promise}

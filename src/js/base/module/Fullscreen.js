@@ -29,7 +29,7 @@ export default class Fullscreen {
   }
 
   /**
-   * toggle fullscreen
+   * переключить полноэкранный режим
    */
   toggle() {
     this.$editor.toggleClass('fullscreen');

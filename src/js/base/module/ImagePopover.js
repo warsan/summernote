@@ -3,9 +3,11 @@ import lists from '../core/lists';
 import dom from '../core/dom';
 
 /**
- * Image popover module
- *  mouse events that show/hide popover will be handled by Handle.js.
- *  Handle.js will receive the events and invoke 'imagePopover.update'.
+ * Модуль всплывающего изображения события мыши, 
+ * которые показывают/скрывают всплывающее окно, 
+ * будут обрабатываться Handle.js.
+ *  Handle.js будет получать события 
+ * и вызывать 'imagePopover.update'.
  */
 export default class ImagePopover {
   constructor(context) {

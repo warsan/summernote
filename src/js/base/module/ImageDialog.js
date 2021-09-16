@@ -62,7 +62,7 @@ export default class ImageDialog {
   show() {
     this.context.invoke('editor.saveRange');
     this.showImageDialog().then((data) => {
-      // [workaround] hide dialog before restore range for IE range focus
+      // [обходной путь] скрытие диалогового окна перед восстановлением диапазона для фокуса диапазона в IE
       this.ui.hideDialog(this.$dialog);
       this.context.invoke('editor.restoreRange');
 
@@ -73,7 +73,7 @@ export default class ImageDialog {
         } else {
           this.context.invoke('editor.insertImage', data);
         }
-      } else { // array of files
+      } else { // массив файлов
         this.context.invoke('editor.insertImagesOrCallback', data);
       }
     }).fail(() => {
@@ -82,7 +82,7 @@ export default class ImageDialog {
   }
 
   /**
-   * show image dialog
+   * показать диалог изображения
    *
    * @param {jQuery} $dialog
    * @return {Promise}
@@ -96,7 +96,7 @@ export default class ImageDialog {
       this.ui.onDialogShown(this.$dialog, () => {
         this.context.triggerEvent('dialog.shown');
 
-        // Cloning imageInput to clear element.
+        // Клонирование imageInput в чистый элемент.
         $imageInput.replaceWith($imageInput.clone().on('change', (event) => {
           deferred.resolve(event.target.files || event.target.value);
         }).val(''));
