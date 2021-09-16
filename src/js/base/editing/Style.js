@@ -7,14 +7,14 @@ export default class Style {
   /**
    * @method jQueryCSS
    *
-   * [workaround] for old jQuery
-   * passing an array of style properties to .css()
-   * will result in an object of property-value pairs.
-   * (compability with version < 1.9)
+   * [workaround] для старого jQuery
+   * передача массива свойств стиля в .css()
+   * приведет к объекту, состоящему из пар "свойство-значение".
+   * (совместимость с версией < 1.9)
    *
    * @private
    * @param  {jQuery} $obj
-   * @param  {Array} propertyNames - An array of one or more CSS properties.
+   * @param  {Array} propertyNames - Массив из одного или нескольких свойств CSS.
    * @return {Object}
    */
   jQueryCSS($obj, propertyNames) {
@@ -26,7 +26,7 @@ export default class Style {
   }
 
   /**
-   * returns style object from node
+   * возвращает объект стиля из узла
    *
    * @param {jQuery} $node
    * @return {Object}
@@ -44,7 +44,7 @@ export default class Style {
   }
 
   /**
-   * paragraph level style
+   * стиль уровня абзаца
    *
    * @param {WrappedRange} rng
    * @param {Object} styleInfo
@@ -58,10 +58,10 @@ export default class Style {
   }
 
   /**
-   * insert and returns styleNodes on range.
+   * вставляет и возвращает styleNodes на диапазон.
    *
    * @param {WrappedRange} rng
-   * @param {Object} [options] - options for styleNodes
+   * @param {Object} [options] - опции для styleNodes
    * @param {String} [options.nodeName] - default: `SPAN`
    * @param {Boolean} [options.expandClosestSibling] - default: `false`
    * @param {Boolean} [options.onlyPartialContains] - default: `false`
@@ -88,7 +88,7 @@ export default class Style {
     if (expandClosestSibling) {
       if (onlyPartialContains) {
         const nodesInRange = rng.nodes();
-        // compose with partial contains predication
+        // составной с частичным содержит предикацию
         pred = func.and(pred, (node) => {
           return lists.contains(nodesInRange, node);
         });
@@ -110,17 +110,17 @@ export default class Style {
   }
 
   /**
-   * get current style on cursor
+   * получить текущий стиль на курсоре
    *
    * @param {WrappedRange} rng
-   * @return {Object} - object contains style properties.
+   * @return {Object} - объект содержит свойства стиля.
    */
   current(rng) {
     const $cont = $(!dom.isElement(rng.sc) ? rng.sc.parentNode : rng.sc);
     let styleInfo = this.fromNode($cont);
 
-    // document.queryCommandState for toggle state
-    // [workaround] prevent Firefox nsresult: "0x80004005 (NS_ERROR_FAILURE)"
+    // document.queryCommandState для состояния переключения
+    // [обходной путь] предотвратить Firefox nsresult: "0x80004005 (NS_ERROR_FAILURE)"
     try {
       styleInfo = $.extend(styleInfo, {
         'font-bold': document.queryCommandState('bold') ? 'bold' : 'normal',

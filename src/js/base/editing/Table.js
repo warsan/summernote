@@ -4,11 +4,11 @@ import range from '../core/range';
 import lists from '../core/lists';
 
 /**
- * @class Create a virtual table to create what actions to do in change.
- * @param {object} startPoint Cell selected to apply change.
- * @param {enum} where  Where change will be applied Row or Col. Use enum: TableResultAction.where
- * @param {enum} action Action to be applied. Use enum: TableResultAction.requestAction
- * @param {object} domTable Dom element of table to make changes.
+ * @class Создайте виртуальный стол, чтобы определить, какие действия необходимо предпринять при изменении.
+ * @param {object} startPoint Ячейка, выбранная для применения изменений.
+ * @param {enum} where  Где будет применено изменение Строка или столбец. Используйте перечисление: TableResultAction.where
+ * @param {enum} action Действие должно быть применено. Используйте перечисление: TableResultAction.requestAction
+ * @param {object} domTable Dom элемент таблицы для внесения изменений.
  */
 const TableResultAction = function(startPoint, where, action, domTable) {
   const _startPoint = { 'colPos': 0, 'rowPos': 0 };
@@ -16,33 +16,33 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   const _actionCellList = [];
 
   /// ///////////////////////////////////////////
-  // Private functions
+  // Частные функции
   /// ///////////////////////////////////////////
 
   /**
-   * Set the startPoint of action.
+   * Установите начальную точку действия.
    */
   function setStartPoint() {
     if (!startPoint || !startPoint.tagName || (startPoint.tagName.toLowerCase() !== 'td' && startPoint.tagName.toLowerCase() !== 'th')) {
-      // Impossible to identify start Cell point
+      // Невозможно определить начальную точку ячейки
       return;
     }
     _startPoint.colPos = startPoint.cellIndex;
     if (!startPoint.parentElement || !startPoint.parentElement.tagName || startPoint.parentElement.tagName.toLowerCase() !== 'tr') {
-      // Impossible to identify start Row point
+      // Невозможно определить точку начала Ряда
       return;
     }
     _startPoint.rowPos = startPoint.parentElement.rowIndex;
   }
 
   /**
-   * Define virtual table position info object.
+   * Определите информационный объект позиции виртуального стола.
    *
-   * @param {int} rowIndex Index position in line of virtual table.
-   * @param {int} cellIndex Index position in column of virtual table.
-   * @param {object} baseRow Row affected by this position.
-   * @param {object} baseCell Cell affected by this position.
-   * @param {bool} isSpan Inform if it is an span cell/row.
+   * @param {int} rowIndex Положение индекса в строке виртуальной таблицы.
+   * @param {int} cellIndex Позиция индекса в столбце виртуальной таблицы.
+   * @param {object} baseRow Ряд, затронутый этой позицией.
+   * @param {object} baseCell Клетка, на которую влияет эта позиция.
+   * @param {bool} isSpan Сообщите, если это ячейка/строка span.
    */
   function setVirtualTablePosition(rowIndex, cellIndex, baseRow, baseCell, isRowSpan, isColSpan, isVirtualCell) {
     const objPosition = {
@@ -59,10 +59,10 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Create action cell object.
+   * Создайте объект ячейки действия.
    *
-   * @param {object} virtualTableCellObj Object of specific position on virtual table.
-   * @param {enum} resultAction Action to be applied in that item.
+   * @param {object} virtualTableCellObj Объект определенного положения на виртуальном столе.
+   * @param {enum} resultAction Действие, которое будет применено в этом пункте.
    */
   function getActionCell(virtualTableCellObj, resultAction, virtualRowPosition, virtualColPosition) {
     return {
@@ -76,10 +76,10 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Recover free index of row to append Cell.
+   * Восстановить свободный индекс строки для добавления Cell.
    *
-   * @param {int} rowIndex Index of row to find free space.
-   * @param {int} cellIndex Index of cell to find free space in table.
+   * @param {int} rowIndex Индекс строки для поиска свободного места.
+   * @param {int} cellIndex Индекс ячейки для поиска свободного места в таблице.
    */
   function recoverCellIndex(rowIndex, cellIndex) {
     if (!_virtualTable[rowIndex]) {
@@ -99,10 +99,10 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Recover info about row and cell and add information to virtual table.
+   * Восстановление информации о строке и ячейке и добавление информации в виртуальную таблицу.
    *
-   * @param {object} row Row to recover information.
-   * @param {object} cell Cell to recover information.
+   * @param {object} row Ряд для восстановления информации.
+   * @param {object} cell Ячейка для восстановления информации.
    */
   function addCellInfoToVirtual(row, cell) {
     const cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
@@ -111,7 +111,7 @@ const TableResultAction = function(startPoint, where, action, domTable) {
     const isThisSelectedCell = (row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos);
     setVirtualTablePosition(row.rowIndex, cellIndex, row, cell, cellHasRowspan, cellHasColspan, false);
 
-    // Add span rows to virtual Table.
+    // Добавьте пролетные строки в виртуальную таблицу.
     const rowspanNumber = cell.attributes.rowSpan ? parseInt(cell.attributes.rowSpan.value, 10) : 0;
     if (rowspanNumber > 1) {
       for (let rp = 1; rp < rowspanNumber; rp++) {
@@ -121,7 +121,7 @@ const TableResultAction = function(startPoint, where, action, domTable) {
       }
     }
 
-    // Add span cols to virtual table.
+    // Добавьте промежуточные столбцы в виртуальную таблицу.
     const colspanNumber = cell.attributes.colSpan ? parseInt(cell.attributes.colSpan.value, 10) : 0;
     if (colspanNumber > 1) {
       for (let cp = 1; cp < colspanNumber; cp++) {
@@ -133,7 +133,7 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Process validation and adjust of start point if needed
+   * Валидация процесса и корректировка начальной точки при необходимости
    *
    * @param {int} rowIndex
    * @param {int} cellIndex
@@ -147,7 +147,7 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Create virtual table of cells with all cells, including span cells.
+   * Создайте виртуальную таблицу ячеек со всеми ячейками, включая ячейки span.
    */
   function createVirtualTable() {
     const rows = domTable.rows;
@@ -160,9 +160,9 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Get action to be applied on the cell.
+   * Получить действие, которое будет применено к ячейке.
    *
-   * @param {object} cell virtual table cell to apply action
+   * @param {object} cell виртуальная ячейка таблицы для применения действия
    */
   function getDeleteResultActionToCell(cell) {
     switch (where) {
@@ -183,9 +183,9 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /**
-   * Get action to be applied on the cell.
+   * Получить действие, которое будет применено к ячейке.
    *
-   * @param {object} cell virtual table cell to apply action
+   * @param {object} cell виртуальная ячейка таблицы для применения действия
    */
   function getAddResultActionToCell(cell) {
     switch (where) {
@@ -213,11 +213,11 @@ const TableResultAction = function(startPoint, where, action, domTable) {
   }
 
   /// ///////////////////////////////////////////
-  // Public functions
+  // Общественные функции
   /// ///////////////////////////////////////////
 
   /**
-   * Recover array os what to do in table.
+   * Восстановление массива os что делать в таблице.
    */
   this.getActionList = function() {
     const fixedRow = (where === TableResultAction.where.Row) ? _startPoint.rowPos : -1;
@@ -239,7 +239,7 @@ const TableResultAction = function(startPoint, where, action, domTable) {
         return _actionCellList;
       }
 
-      // Define action to be applied in this cell
+      // Определите действие, которое будет применено в этой ячейке
       let resultAction = TableResultAction.resultAction.Ignore;
       switch (action) {
         case TableResultAction.requestAction.Add:
@@ -260,17 +260,17 @@ const TableResultAction = function(startPoint, where, action, domTable) {
 };
 /**
 *
-* Where action occours enum.
+* Где происходит действие enum.
 */
 TableResultAction.where = { 'Row': 0, 'Column': 1 };
 /**
 *
-* Requested action to apply enum.
+* Запрашиваемое действие для применения перечисления.
 */
 TableResultAction.requestAction = { 'Add': 0, 'Delete': 1 };
 /**
 *
-* Result action to be executed enum.
+* Результат действия, которое должно быть выполнено enum.
 */
 TableResultAction.resultAction = { 'Ignore': 0, 'SubtractSpanCount': 1, 'RemoveCell': 2, 'AddCell': 3, 'SumSpanCount': 4 };
 
@@ -283,7 +283,7 @@ TableResultAction.resultAction = { 'Ignore': 0, 'SubtractSpanCount': 1, 'RemoveC
  */
 export default class Table {
   /**
-   * handle tab key
+   * клавиша вкладки рукоятки
    *
    * @param {WrappedRange} rng
    * @param {Boolean} isShift
@@ -300,7 +300,7 @@ export default class Table {
   }
 
   /**
-   * Add a new row
+   * Добавить новый ряд
    *
    * @param {WrappedRange} rng
    * @param {String} position (top/bottom)
@@ -357,10 +357,10 @@ export default class Table {
   }
 
   /**
-   * Add a new col
+   * Добавить новый столбец
    *
    * @param {WrappedRange} rng
-   * @param {String} position (left/right)
+   * @param {String} position (левый/правый)
    * @return {Node}
    */
   addCol(rng, position) {
@@ -398,10 +398,10 @@ export default class Table {
   }
 
   /*
-  * Copy attributes from element.
+  * Копирование атрибутов из элемента.
   *
-  * @param {object} Element to recover attributes.
-  * @return {string} Copied string elements.
+  * @param {object} Элемент для восстановления атрибутов.
+  * @return {string} Копирование элементов строки.
   */
   recoverAttributes(el) {
     let resultStr = '';
@@ -426,7 +426,7 @@ export default class Table {
   }
 
   /**
-   * Delete current row
+   * Удалить текущую строку
    *
    * @param {WrappedRange} rng
    * @return {Node}
@@ -485,7 +485,7 @@ export default class Table {
           }
           continue;
         case TableResultAction.resultAction.RemoveCell:
-          // Do not need remove cell because row will be deleted.
+          // Удалять ячейку не нужно, так как строка будет удалена.
           continue;
       }
     }
@@ -493,7 +493,7 @@ export default class Table {
   }
 
   /**
-   * Delete current col
+   * Удалить текущий столбец
    *
    * @param {WrappedRange} rng
    * @return {Node}
@@ -539,7 +539,7 @@ export default class Table {
   }
 
   /**
-   * create empty table element
+   * создать пустой элемент таблицы
    *
    * @param {Number} rowCount
    * @param {Number} colCount
@@ -568,7 +568,7 @@ export default class Table {
   }
 
   /**
-   * Delete current table
+   * Удалить текущую таблицу
    *
    * @param {WrappedRange} rng
    * @return {Node}

@@ -30,52 +30,52 @@ export default class History {
 
   /**
   * @method rewind
-  * Rewinds the history stack back to the first snapshot taken.
-  * Leaves the stack intact, so that "Redo" can still be used.
+  * Перемотка стёка истории назад к первому сделанному снимку.
+  * Оставляет стёк нетронутым, так что "Redo" всё ещё можно использовать.
   */
   rewind() {
-    // Create snap shot if not yet recorded
+    // Создайте моментальный снимок, если он ещё не записан
     if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
       this.recordUndo();
     }
 
-    // Return to the first available snapshot.
+    // Возврат к первому доступному снимку.
     this.stackOffset = 0;
 
-    // Apply that snapshot.
+    // Примените этот снимок.
     this.applySnapshot(this.stack[this.stackOffset]);
   }
 
   /**
   *  @method commit
-  *  Resets history stack, but keeps current editor's content.
+  *  Сбрасывает стёк истории, но сохраняет содержимое текущего редактора.
   */
   commit() {
-    // Clear the stack.
+    // Очистите стек.
     this.stack = [];
 
-    // Restore stackOffset to its original value.
+    // Восстановление исходного значения stackOffset.
     this.stackOffset = -1;
 
-    // Record our first snapshot (of nothing).
+    // Записываем наш первый снимок (из ничего).
     this.recordUndo();
   }
 
   /**
   * @method reset
-  * Resets the history stack completely; reverting to an empty editor.
+  * Полностью сбрасывает стёк истории; возврат к пустому редактору.
   */
   reset() {
-    // Clear the stack.
+    // Очистите стёк.
     this.stack = [];
 
-    // Restore stackOffset to its original value.
+    // Восстановление исходного значения stackOffset.
     this.stackOffset = -1;
 
-    // Clear the editable area.
+    // Очистите редактируемую область.
     this.$editable.html('');
 
-    // Record our first snapshot (of nothing).
+    // Записываем наш первый снимок (из ничего).
     this.recordUndo();
   }
 
@@ -83,7 +83,7 @@ export default class History {
    * undo
    */
   undo() {
-    // Create snap shot if not yet recorded
+    // Создайте моментальный снимок, если он ещё не записан
     if (this.$editable.html() !== this.stack[this.stackOffset].contents) {
       this.recordUndo();
     }
@@ -95,7 +95,7 @@ export default class History {
   }
 
   /**
-   * redo
+   * переделать
    */
   redo() {
     if (this.stack.length - 1 > this.stackOffset) {
@@ -105,20 +105,20 @@ export default class History {
   }
 
   /**
-   * recorded undo
+   * записанная отмена
    */
   recordUndo() {
     this.stackOffset++;
 
-    // Wash out stack after stackOffset
+    // Вымывание стёка после смещения стёка (stackOffset)
     if (this.stack.length > this.stackOffset) {
       this.stack = this.stack.slice(0, this.stackOffset);
     }
 
-    // Create new snapshot and push it to the end
+    // Создайте новый снимок и переместите его в конец
     this.stack.push(this.makeSnapshot());
 
-    // If the stack size reachs to the limit, then slice it
+    // Если размер стёка достигает предела, то разрежьте его на части
     if (this.stack.length > this.context.options.historyLimit) {
       this.stack.shift();
       this.stackOffset -= 1;

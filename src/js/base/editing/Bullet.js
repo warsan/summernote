@@ -6,21 +6,21 @@ import range from '../core/range';
 
 export default class Bullet {
   /**
-   * toggle ordered list
+   * переключение упорядоченного списка
    */
   insertOrderedList(editable) {
     this.toggleList('OL', editable);
   }
 
   /**
-   * toggle unordered list
+   * переключить неупорядоченный список
    */
   insertUnorderedList(editable) {
     this.toggleList('UL', editable);
   }
 
   /**
-   * indent
+   * отступ
    */
   indent(editable) {
     const rng = range.create(editable).wrapBodyInlineWithPara();
@@ -54,7 +54,7 @@ export default class Bullet {
   }
 
   /**
-   * outdent
+   * наружу
    */
   outdent(editable) {
     const rng = range.create(editable).wrapBodyInlineWithPara();
@@ -80,9 +80,9 @@ export default class Bullet {
   }
 
   /**
-   * toggle list
+   * переключение списка
    *
-   * @param {String} listName - OL or UL
+   * @param {String} listName - OL или UL
    */
   toggleList(listName, editable) {
     const rng = range.create(editable).wrapBodyInlineWithPara();
@@ -91,14 +91,14 @@ export default class Bullet {
     const bookmark = rng.paraBookmark(paras);
     const clustereds = lists.clusterBy(paras, func.peq2('parentNode'));
 
-    // paragraph to list
+    // абзац к списку
     if (lists.find(paras, dom.isPurePara)) {
       let wrappedParas = [];
       $.each(clustereds, (idx, paras) => {
         wrappedParas = wrappedParas.concat(this.wrapList(paras, listName));
       });
       paras = wrappedParas;
-    // list to paragraph or change list style
+    // список в абзац или изменить стиль списка
     } else {
       const diffLists = rng.nodes(dom.isList, {
         includeAncestor: true,
@@ -137,7 +137,7 @@ export default class Bullet {
       return dom.isPurePara(para) ? dom.replace(para, 'LI') : para;
     });
 
-    // append to list(<ul>, <ol>)
+    // добавить в список(<ul>, <ol>)
     dom.appendChildNodes(listNode, paras);
 
     if (nextList) {
@@ -240,9 +240,9 @@ export default class Bullet {
 
   /**
    * @method appendToPrevious
-   *
-   * Appends list to previous list item, if
-   * none exist it wraps the list in a new list item.
+   * Добавляет список к предыдущему элементу списка, 
+   * если не существует, 
+   * то список заворачивается в новый элемент списка.
    *
    * @param {HTMLNode} ListItem
    * @return {HTMLNode}
@@ -256,7 +256,7 @@ export default class Bullet {
   /**
    * @method findList
    *
-   * Finds an existing list in list item
+   * Нет данных (истекло время ожидания отправки данных).
    *
    * @param {HTMLNode} ListItem
    * @return {Array[]}
