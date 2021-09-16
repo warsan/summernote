@@ -59,9 +59,9 @@ export default class AirPopover {
 
     this.context.invoke('buttons.build', $content, this.options.popover.air);
 
-    // disable hiding this popover preemptively by 'summernote.blur' event.
+    // отключение скрытия этого всплывающего окна по событию 'summernote.blur'.
     this.$popover.on('mousedown', () => { this.hidable = false; });
-    // (re-)enable hiding after 'summernote.blur' has been handled (aka. ignored).
+    // (повторное) включение скрытия после обработки 'summernote.blur' (aka. игнорируется).
     this.$popover.on('mouseup', () => { this.hidable = true; });
   }
 

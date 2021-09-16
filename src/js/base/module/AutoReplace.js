@@ -62,8 +62,8 @@ export default class AutoReplace {
   }
 
   handleKeydown(e) {
-    // this forces it to remember the last whole word, even if multiple termination keys are pressed
-    // before the previous key is let go.
+    // это заставляет его запоминать последнее слово целиком, даже если нажато несколько клавиш завершения действия
+    // до того, как предыдущая клавиша будет отпущена.
     if (this.previousKeydownCode && lists.contains(this.keys, this.previousKeydownCode)) {
       this.previousKeydownCode = e.keyCode;
       return;

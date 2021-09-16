@@ -1,23 +1,23 @@
-import $ from 'jquery';
-import dom from '../core/dom';
-import range from '../core/range';
-import Bullet from '../editing/Bullet';
+import $ from "jquery";
+import dom from "../core/dom";
+import range from "../core/range";
+import Bullet from "../editing/Bullet";
 
 /**
  * @class editing.Typing
  *
- * Typing
+ * Типирование
  *
  */
 export default class Typing {
   constructor(context) {
-    // a Bullet instance to toggle lists off
+    // экземпляр Bullet для отключения списков
     this.bullet = new Bullet();
     this.options = context.options;
   }
 
   /**
-   * insert tab
+   * вкладка для вставки
    *
    * @param {WrappedRange} rng
    * @param {Number} tabsize
@@ -32,15 +32,15 @@ export default class Typing {
   }
 
   /**
-   * insert paragraph
+   * вставить абзац
    *
    * @param {jQuery} $editable
-   * @param {WrappedRange} rng Can be used in unit tests to "mock" the range
+   * @param {WrappedRange} rng Может использоваться в модульных тестах для "издевательства". диапазон
    *
    * blockquoteBreakingLevel
-   *   0 - No break, the new paragraph remains inside the quote
-   *   1 - Break the first blockquote in the ancestors list
-   *   2 - Break all blockquotes, so that the new paragraph is not quoted (this is the default)
+   *   0 - Без разрыва, новый абзац остается внутри цитаты
+   *   1 - Разорвать первую блок-цитату в списке предков
+   *   2 - Разорвать все блочные кавычки, чтобы новый абзац не заключался в кавычки (это значение по умолчанию)
    */
   insertParagraph(editable, rng) {
     rng = rng || range.create(editable);
@@ -48,18 +48,21 @@ export default class Typing {
     // deleteContents on range.
     rng = rng.deleteContents();
 
-    // Wrap range if it needs to be wrapped by paragraph
+    // Оберните диапазон, если он должен быть обёрнут абзацем
     rng = rng.wrapBodyInlineWithPara();
 
-    // finding paragraph
+    // пункт заключения
     const splitRoot = dom.ancestor(rng.sc, dom.isPara);
 
     let nextPara;
-    // on paragraph: split paragraph
+    // на абзац: разделить абзац
     if (splitRoot) {
-      // if it is an empty line with li
-      if (dom.isLi(splitRoot) && (dom.isEmpty(splitRoot) || dom.deepestChildIsEmpty(splitRoot))) {
-        // toggle UL/OL and escape
+      // если это пустая строка с li
+      if (
+        dom.isLi(splitRoot) &&
+        (dom.isEmpty(splitRoot) || dom.deepestChildIsEmpty(splitRoot))
+      ) {
+        // переключение UL/OL и выход
         this.bullet.toggleList(splitRoot.parentNode.nodeName);
         return;
       } else {
@@ -71,37 +74,49 @@ export default class Typing {
         }
 
         if (blockquote) {
-          // We're inside a blockquote and options ask us to break it
+          // Мы находимся внутри блочной цитаты, и опции просят нас разорвать её
           nextPara = $(dom.emptyPara)[0];
-          // If the split is right before a <br>, remove it so that there's no "empty line"
-          // after the split in the new blockquote created
-          if (dom.isRightEdgePoint(rng.getStartPoint()) && dom.isBR(rng.sc.nextSibling)) {
+          // Если разделение находится прямо перед <br>, удалите его, чтобы не было "пустой строки".
+          // после разделения в новой блок-цитате, созданной
+          if (
+            dom.isRightEdgePoint(rng.getStartPoint()) &&
+            dom.isBR(rng.sc.nextSibling)
+          ) {
             $(rng.sc.nextSibling).remove();
           }
-          const split = dom.splitTree(blockquote, rng.getStartPoint(), { isDiscardEmptySplits: true });
+          const split = dom.splitTree(blockquote, rng.getStartPoint(), {
+            isDiscardEmptySplits: true
+          });
           if (split) {
             split.parentNode.insertBefore(nextPara, split);
           } else {
-            dom.insertAfter(nextPara, blockquote); // There's no split if we were at the end of the blockquote
+            dom.insertAfter(nextPara, blockquote); // Нет разделения, если мы находимся в конце блок-цитаты.
           }
         } else {
           nextPara = dom.splitTree(splitRoot, rng.getStartPoint());
 
-          // not a blockquote, just insert the paragraph
+          // не блочная цитата, просто вставьте абзац
           let emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
-          emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
+          emptyAnchors = emptyAnchors.concat(
+            dom.listDescendant(nextPara, dom.isEmptyAnchor)
+          );
 
           $.each(emptyAnchors, (idx, anchor) => {
             dom.remove(anchor);
           });
 
-          // replace empty heading, pre or custom-made styleTag with P tag
-          if ((dom.isHeading(nextPara) || dom.isPre(nextPara) || dom.isCustomStyleTag(nextPara)) && dom.isEmpty(nextPara)) {
-            nextPara = dom.replace(nextPara, 'p');
+          // заменить пустой заголовок, предварительный или пользовательский styleTag на тег P
+          if (
+            (dom.isHeading(nextPara) ||
+              dom.isPre(nextPara) ||
+              dom.isCustomStyleTag(nextPara)) &&
+            dom.isEmpty(nextPara)
+          ) {
+            nextPara = dom.replace(nextPara, "p");
           }
         }
       }
-    // no paragraph: insert empty paragraph
+      // без абзаца: вставить пустой абзац
     } else {
       const next = rng.sc.childNodes[rng.so];
       nextPara = $(dom.emptyPara)[0];

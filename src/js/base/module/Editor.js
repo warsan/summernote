@@ -593,8 +593,8 @@ export default class Editor {
   /**
    * currentStyle
    *
-   * current style
-   * @return {Object|Boolean} unfocus
+   * нынешний стиль
+   * @return {Object|Boolean} расфокусировать
    */
   currentStyle() {
     let rng = range.create();
@@ -605,7 +605,7 @@ export default class Editor {
   }
 
   /**
-   * style from node
+   * стиль из узла
    *
    * @param {jQuery} $node
    * @return {Object}
@@ -615,7 +615,7 @@ export default class Editor {
   }
 
   /**
-   * undo
+   * отменить
    */
   undo() {
     this.context.triggerEvent('before.command', this.$editable.html());
@@ -633,7 +633,7 @@ export default class Editor {
   }
 
   /**
-   * redo
+   * переделать
    */
   redo() {
     this.context.triggerEvent('before.command', this.$editable.html());
@@ -642,20 +642,20 @@ export default class Editor {
   }
 
   /**
-   * before command
+   * до команды
    */
   beforeCommand() {
     this.context.triggerEvent('before.command', this.$editable.html());
 
-    // Set styleWithCSS before run a command
+    // Установите styleWithCSS перед выполнением команды
     document.execCommand('styleWithCSS', false, this.options.styleWithCSS);
 
-    // keep focus on editable before command execution
+    // удерживать фокус на редактируемом объекте до выполнения команды
     this.focus();
   }
 
   /**
-   * after command
+   * после команды
    * @param {Boolean} isPreventTrigger
    */
   afterCommand(isPreventTrigger) {
@@ -667,7 +667,7 @@ export default class Editor {
   }
 
   /**
-   * handle tab key
+   * клавиша вкладки рукоятки
    */
   tab() {
     const rng = this.getLastRange();
@@ -687,7 +687,7 @@ export default class Editor {
   }
 
   /**
-   * handle shift+tab key
+   * клавиша shift+tab
    */
   untab() {
     const rng = this.getLastRange();
@@ -701,7 +701,7 @@ export default class Editor {
   }
 
   /**
-   * run given function between beforeCommand and afterCommand
+   * запустить заданную функцию между beforeCommand и afterCommand
    */
   wrapCommand(fn) {
     return function() {
@@ -712,7 +712,7 @@ export default class Editor {
   }
 
   /**
-   * insert image
+   * вставить изображение
    *
    * @param {String} src
    * @param {String|Function} param
@@ -765,23 +765,23 @@ export default class Editor {
    */
   insertImagesOrCallback(files) {
     const callbacks = this.options.callbacks;
-    // If onImageUpload set,
+    // Если параметр onImageUpload установлен,
     if (callbacks.onImageUpload) {
       this.context.triggerEvent('image.upload', files);
-      // else insert Image as dataURL
+      // вставить изображение как dataURL
     } else {
       this.insertImagesAsDataURL(files);
     }
   }
 
   /**
-   * return selected plain text
-   * @return {String} text
+   * возвращает выделенный простой текст
+   * @return {String} текст
    */
   getSelectedText() {
     let rng = this.getLastRange();
 
-    // if range on anchor, expand range with anchor
+    // если диапазон на якоре, расширить диапазон с помощью якоря
     if (rng.isOnAnchor()) {
       rng = range.createFromNode(dom.ancestor(rng.sc, dom.isAnchor));
     }
@@ -790,12 +790,12 @@ export default class Editor {
   }
 
   onFormatBlock(tagName, $target) {
-    // [workaround] for MSIE, IE need `<`
+    // [обходной путь] для MSIE, IE требуется `<`
     document.execCommand('FormatBlock', false, env.isMSIE ? '<' + tagName + '>' : tagName);
 
-    // support custom class
+    // поддержка пользовательских классов
     if ($target && $target.length) {
-      // find the exact element has given tagName
+      // найти точный элемент с заданным именем tagName
       if ($target[0].tagName.toUpperCase() !== tagName.toUpperCase()) {
         $target = $target.find(tagName);
       }
@@ -803,7 +803,7 @@ export default class Editor {
       if ($target && $target.length) {
         const currentRange = this.createRange();
         const $parent = $([currentRange.sc, currentRange.ec]).closest(tagName);
-        // remove class added for current block
+        // удалить класс, добавленный для текущего блока
         $parent.removeClass();
         const className = $target[0].className || '';
         if (className) {
@@ -825,8 +825,8 @@ export default class Editor {
       this.$editor.find('.note-status-output').html('');
       $(spans).css(target, value);
 
-      // [workaround] added styled bogus span for style
-      //  - also bogus character needed for cursor position
+      // [обходной путь] добавлена стилизация фиктивного span для стиля
+      //  - также фиктивный символ, необходимый для определения положения курсора
       if (rng.isCollapsed()) {
         const firstSpan = lists.head(spans);
         if (firstSpan && !dom.nodeLength(firstSpan)) {
@@ -848,9 +848,9 @@ export default class Editor {
   }
 
   /**
-   * unlink
+   * отсоединить
    *
-   * @type command
+   * @type команда
    */
   unlink() {
     let rng = this.getLastRange();
@@ -867,7 +867,7 @@ export default class Editor {
   }
 
   /**
-   * returns link info
+   * возвращает информацию о ссылке
    *
    * @return {Object}
    * @return {WrappedRange} return.range
@@ -877,7 +877,7 @@ export default class Editor {
    */
   getLinkInfo() {
     const rng = this.getLastRange().expand(dom.isAnchor);
-    // Get the first anchor on range(for edit).
+    // Получить первый якорь в диапазоне (для редактирования).
     const $anchor = $(lists.head(rng.nodes(dom.isAnchor)));
     const linkInfo = {
       range: rng,
@@ -885,9 +885,9 @@ export default class Editor {
       url: $anchor.length ? $anchor.attr('href') : '',
     };
 
-    // When anchor exists,
+    // Когда якорь существует,
     if ($anchor.length) {
-      // Set isNewWindow by checking its target.
+      // Установите isNewWindow, проверив его цель.
       linkInfo.isNewWindow = $anchor.attr('target') === '_blank';
     }
 
@@ -941,8 +941,8 @@ export default class Editor {
 
   /**
    * @param {Position} pos
-   * @param {jQuery} $target - target element
-   * @param {Boolean} [bKeepRatio] - keep ratio
+   * @param {jQuery} $target - целевой элемент
+   * @param {Boolean} [bKeepRatio] - коэффициент сохранения
    */
   resizeTo(pos, $target, bKeepRatio) {
     let imageSize;
@@ -964,25 +964,25 @@ export default class Editor {
   }
 
   /**
-   * returns whether editable area has focus or not.
+   * возвращает, имеет ли редактируемая область фокус или нет.
    */
   hasFocus() {
     return this.$editable.is(':focus');
   }
 
   /**
-   * set focus
+   * установить фокус
    */
   focus() {
-    // [workaround] Screen will move when page is scolled in IE.
-    //  - do focus when not focused
+    // [обходной путь] Экран перемещается при прокрутке страницы в IE.
+    //  - сосредоточиться, когда не сосредоточен
     if (!this.hasFocus()) {
       this.$editable.focus();
     }
   }
 
   /**
-   * returns whether contents is empty or not.
+   * возвращает, является ли содержимое пустым или нет.
    * @return {Boolean}
    */
   isEmpty() {
@@ -990,14 +990,14 @@ export default class Editor {
   }
 
   /**
-   * Removes all contents and restores the editable instance to an _emptyPara_.
+   * Удаляет все содержимое и восстанавливает редактируемый экземпляр в _emptyPara_.
    */
   empty() {
     this.context.invoke('code', dom.emptyPara);
   }
 
   /**
-   * normalize content
+   * нормализовать содержимое
    */
   normalizeContent() {
     this.$editable[0].normalize();

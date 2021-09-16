@@ -146,7 +146,7 @@ export default class Buttons {
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="foreColorPicker-'+this.options.id+'" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-'+this.options.id+'">',
-              '</div>', // Fix missing Div, Commented to find easily if it's wrong
+              '</div>', // Исправьте отсутствующий Div, закомментируйте, чтобы легко найти, если это неправильно
               '<div class="note-holder-custom" id="foreColorPalette-'+this.options.id+'" data-event="foreColor"></div>',
             '</div>',
           ].join('') : ''),
@@ -161,7 +161,7 @@ export default class Buttons {
                 tooltip: this.options.tooltip,
               }).render());
             });
-            /* TODO: do we have to record recent custom colors within cookies? */
+            /* TODO: должны ли мы записывать последние пользовательские цвета в cookies? */
             var customColors = [
               ['#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
             ];
@@ -199,10 +199,10 @@ export default class Buttons {
               const $picker = $parent.find('#' + value);
               const $palette = $($parent.find('#' + $picker.data('event')).find('.note-color-row')[0]);
 
-              // Shift palette chips
+              // Фишки палитры сдвига
               const $chip = $palette.find('.note-color-btn').last().detach();
 
-              // Set chip attributes
+              // Установка атрибутов микросхемы
               const color = $picker.val();
               $chip.css('background-color', color)
                 .attr('aria-label', color)
@@ -245,7 +245,7 @@ export default class Buttons {
           items: this.options.styleTags,
           title: this.lang.style.style,
           template: (item) => {
-            // TBD: need to be simplified
+            // TBD: необходимо упростить
             if (typeof item === 'string') {
               item = {
                 tag: item,
@@ -344,7 +344,7 @@ export default class Buttons {
       const styleInfo = this.context.invoke('editor.currentStyle');
 
       if (this.options.addDefaultFonts) {
-        // Add 'default' fonts into the fontnames array if not exist
+        // Добавьте шрифты 'по умолчанию' в массив fontnames, если он не существует
         $.each(styleInfo['font-family'].split(','), (idx, fontname) => {
           fontname = fontname.trim().replace(/['"]+/g, '');
           if (this.isFontDeservedToAdd(fontname)) {
@@ -650,7 +650,7 @@ export default class Buttons {
    * ],
    */
   addImagePopoverButtons() {
-    // Image Size Buttons
+    // Кнопки размера изображения
     this.context.memo('button.resizeFull', () => {
       return this.button({
         contents: '<span class="note-fontsize-10">100%</span>',
@@ -680,7 +680,7 @@ export default class Buttons {
       }).render();
     });
 
-    // Float Buttons
+    // Кнопки поплавка
     this.context.memo('button.floatLeft', () => {
       return this.button({
         contents: this.ui.icon(this.options.icons.floatLeft),
@@ -705,7 +705,7 @@ export default class Buttons {
       }).render();
     });
 
-    // Remove Buttons
+    // Удалить кнопки
     this.context.memo('button.removeMedia', () => {
       return this.button({
         contents: this.ui.icon(this.options.icons.trash),
@@ -856,7 +856,7 @@ export default class Buttons {
 
       $cont.find('.dropdown-fontname a').each((idx, item) => {
         const $item = $(item);
-        // always compare string to avoid creating another func.
+        // всегда сравнивать строку, чтобы не создавать ещё одну функцию.
         const isChecked = ($item.data('value') + '') === (fontName + '');
         $item.toggleClass('checked', isChecked);
       });
@@ -867,7 +867,7 @@ export default class Buttons {
       const fontSize = styleInfo['font-size'];
       $cont.find('.dropdown-fontsize a').each((idx, item) => {
         const $item = $(item);
-        // always compare with string to avoid creating another func.
+        // всегда сравнивать со строкой, чтобы не создавать ещё одну функцию.
         const isChecked = ($item.data('value') + '') === (fontSize + '');
         $item.toggleClass('checked', isChecked);
       });
@@ -886,7 +886,7 @@ export default class Buttons {
       const lineHeight = styleInfo['line-height'];
       $cont.find('.dropdown-line-height a').each((idx, item) => {
         const $item = $(item);
-        // always compare with string to avoid creating another func.
+        // всегда сравнивать со строкой, чтобы не создавать ещё одну функцию.
         const isChecked = ($(item).data('value') + '') === (lineHeight + '');
         $item.toggleClass('checked', isChecked);
       });
@@ -902,14 +902,14 @@ export default class Buttons {
 
   tableMoveHandler(event) {
     const PX_PER_EM = 18;
-    const $picker = $(event.target.parentNode); // target is mousecatcher
+    const $picker = $(event.target.parentNode); // цель - ловец мышей
     const $dimensionDisplay = $picker.next();
     const $catcher = $picker.find('.note-dimension-picker-mousecatcher');
     const $highlighted = $picker.find('.note-dimension-picker-highlighted');
     const $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
 
     let posOffset;
-    // HTML5 with jQuery - e.offsetX is undefined in Firefox
+    // HTML5 с jQuery - e.offsetX не определён в Firefox
     if (event.offsetX === undefined) {
       const posCatcher = $(event.target).offset();
       posOffset = {

@@ -18,15 +18,15 @@ export default class Dropzone {
   }
 
   /**
-   * attach Drag and Drop Events
+   * прикрепить события перетаскивания
    */
   initialize() {
     if (this.options.disableDragAndDrop) {
-      // prevent default drop event
+      // предотвращение события падения по умолчанию
       this.documentEventHandlers.onDrop = (e) => {
         e.preventDefault();
       };
-      // do not consider outside of dropzone
+      // не рассматривать за пределами дропзоны
       this.$eventListener = this.$dropzone;
       this.$eventListener.on('drop', this.documentEventHandlers.onDrop);
     } else {
@@ -35,7 +35,7 @@ export default class Dropzone {
   }
 
   /**
-   * attach Drag and Drop Events
+   * прикрепить события перетаскивания
    */
   attachDragAndDropEvent() {
     let collection = $();
@@ -56,7 +56,7 @@ export default class Dropzone {
     this.documentEventHandlers.onDragleave = (e) => {
       collection = collection.not(e.target);
 
-      // If nodeName is BODY, then just make it over (fix for IE)
+      // Если nodeName является BODY, то просто переделайте его (исправление для IE)
       if (!collection.length || e.target.nodeName === 'BODY') {
         collection = $();
         this.$editor.removeClass('dragover');
@@ -68,13 +68,13 @@ export default class Dropzone {
       this.$editor.removeClass('dragover');
     };
 
-    // show dropzone on dragenter when dragging a object to document
-    // -but only if the editor is visible, i.e. has a positive width and height
+    // отображение дропзоны на драгцентре при перетаскивании объекта в документ
+    // -но только если редактор виден, т.е. имеет положительную ширину и высоту
     this.$eventListener.on('dragenter', this.documentEventHandlers.onDragenter)
       .on('dragleave', this.documentEventHandlers.onDragleave)
       .on('drop', this.documentEventHandlers.onDrop);
 
-    // change dropzone's message on hover.
+    // изменить сообщение дропзоны при наведении.
     this.$dropzone.on('dragenter', () => {
       this.$dropzone.addClass('hover');
       $dropzoneMessage.text(this.lang.image.dropImage);
@@ -83,11 +83,11 @@ export default class Dropzone {
       $dropzoneMessage.text(this.lang.image.dragImageHere);
     });
 
-    // attach dropImage
+    // прикрепить dropImage
     this.$dropzone.on('drop', (event) => {
       const dataTransfer = event.originalEvent.dataTransfer;
 
-      // stop the browser from opening the dropped content
+      // Остановите браузер от открытия отброшенного контента
       event.preventDefault();
 
       if (dataTransfer && dataTransfer.files && dataTransfer.files.length) {
@@ -95,7 +95,7 @@ export default class Dropzone {
         this.context.invoke('editor.insertImagesOrCallback', dataTransfer.files);
       } else {
         $.each(dataTransfer.types, (idx, type) => {
-          // skip moz-specific types
+          // пропустить типы, специфичные для moz
           if (type.toLowerCase().indexOf('_moz_') > -1) {
             return;
           }
@@ -110,7 +110,7 @@ export default class Dropzone {
           }
         });
       }
-    }).on('dragover', false); // prevent default dragover event
+    }).on('dragover', false); // Запретить событие перетаскивания по умолчанию
   }
 
   destroy() {

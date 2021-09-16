@@ -1,7 +1,7 @@
 import dom from '../core/dom';
 
 /**
- * textarea auto sync.
+ * автоматическая синхронизация текстового поля.
  */
 export default class AutoSync {
   constructor(context) {
