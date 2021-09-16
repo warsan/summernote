@@ -1,92 +1,105 @@
 # Summernote
 
-Super simple WYSIWYG Editor.
+Супер простой WYSIWYG-редактор.
 
 [![Build Status](https://travis-ci.org/summernote/summernote.svg?branch=develop)](http://travis-ci.org/summernote/summernote)
 [![npm version](https://badge.fury.io/js/summernote.svg)](http://badge.fury.io/js/summernote)
 [![Coverage Status](https://coveralls.io/repos/summernote/summernote/badge.svg?branch=develop&service=github)](https://coveralls.io/github/summernote/summernote?branch=develop)
 
 ### Summernote
-Summernote is a JavaScript library that helps you create WYSIWYG editors online.
 
-Home page: <https://summernote.org>
+Summernote - это библиотека JavaScript, которая помогает создавать WYSIWYG-редакторы в Интернете.
 
-### Why Summernote?
+Главная страница: <https://summernote.org>
 
-Summernote has a few special features:
+### Почему именно Summernote?
 
-* Paste images from clipboard
-* Saves images directly in the content of the field using base64 encoding, so you don't need to implement image handling at all
-* Simple UI
-* Interactive WYSIWYG editing
-* Handy integration with server
-* Supports Bootstrap 3 and 4 integrities
-* Lots of [plugins and connectors](https://github.com/summernote/awesome-summernote) provided together
+Summernote имеет несколько особенностей:
 
-### Installation and dependencies
+- Вставка изображений из буфера обмена
+- Сохраняет изображения непосредственно в содержимом поля, используя кодировку base64, поэтому вам не нужно реализовывать обработку изображений вообще
+- Простой пользовательский интерфейс
+- Интерактивное редактирование WYSIWYG
+- Удобная интеграция с сервером
+- Поддерживает интеграцию Bootstrap 3 и 4
+- Множество [плагинов и коннекторов](https://github.com/summernote/awesome-summernote), предоставляемых вместе
 
-Summernote is built on [jQuery](http://jquery.com/).
+### Установка и зависимости
 
-#### 1. Include JS/CSS
+Summernote построен на [jQuery](http://jquery.com/).
 
-Include the following code in the `<head>` tag of your HTML:
+#### 1. Включить JS/CSS
+
+Включите следующий код в тег `<head>` вашего HTML:
 
 ```html
-<!-- include libraries(jQuery, bootstrap) -->
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" />
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- включить библиотеки (jQuery, bootstrap) -->
+<script
+  type="text/javascript"
+  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+></script>
+<link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+/>
+<script
+  type="text/javascript"
+  src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+></script>
 
-<!-- include summernote css/js-->
-<link href="summernote.css" rel="stylesheet">
+<!-- включить summernote css/js-->
+<link href="summernote.css" rel="stylesheet" />
 <script src="summernote.js"></script>
 ```
 
-#### 2. Target a element
+#### 2. Нацелить элемент
 
-Then place a `div` tag somewhere in the `body` tag. This element will be replaced with the summernote editor.
+Затем поместите тег `div` куда-нибудь в тег `body`. Этот элемент будет заменен редактором summernote.
 
 ```html
 <div id="summernote">Hello Summernote</div>
 ```
 
-#### 3. Summernote it!
+#### 3. Summernote это!
 
-Finally, run this script after the DOM is ready:
+Наконец, запустите этот скрипт после того, как DOM будет готов:
 
 ```javascript
-$(document).ready(function() {
-  $('#summernote').summernote();
+$(document).ready(function () {
+  $("#summernote").summernote();
 });
 ```
 
-For more examples, please visit to [homepage](http://summernote.org/examples).
+Другие примеры можно найти на сайте [домашняя страница](http://summernote.org/examples).
 
 ### API
 
-`code` - get the HTML source code underlying the text in the editor:
+`code` - получить исходный код HTML, лежащий в основе текста в редакторе:
 
 ```javascript
-var html = $('#summernote').summernote('code');
+var html = $("#summernote").summernote("code");
 ```
 
-For more detail about API, please refer to [document](http://summernote.org/getting-started/#basic-api).
+Для получения более подробной информации об API, пожалуйста, обратитесь к [документу](http://summernote.org/getting-started/#basic-api).
 
 #### Warning - code injection
 
-The code view allows the user to enter script contents. Make sure to filter/[sanitize the HTML on the server](https://github.com/search?l=JavaScript&q=sanitize+html). Otherwise, an attacker can inject arbitrary JavaScript code into clients.
+Представление кода позволяет пользователю вводить содержимое сценария. Обязательно фильтруйте/[обеззараживайте HTML на сервере](https://github.com/search?l=JavaScript&q=sanitize+html). В противном случае злоумышленник может внедрить произвольный код JavaScript в клиенты.
 
-### For contributing
+### За внесение вклада
+
 https://github.com/summernote/summernote/blob/develop/.github/CONTRIBUTING.md
 
-### Contacts
-* Facebook user group: https://www.facebook.com/groups/summernote
-* Summernote Slack: [Join the Summernote Slack community](https://communityinviter.com/apps/summernote/summernote)
+### Контакты
 
-## Testing powered by 
+- Группа пользователей Facebook: https://www.facebook.com/groups/summernote
+- Summernote Slack: [Присоединяйтесь к сообществу Summernote Slack](https://communityinviter.com/apps/summernote/summernote)
+
+## Тестирование с использованием
+
 <a target="_blank" href="https://www.browserstack.com/"><img width="200" src="https://www.browserstack.com/images/layout/browserstack-logo-600x315.png"></a><br>
-[BrowserStack Open-Source Program](https://www.browserstack.com/open-source)
+[Программа BrowserStack с открытым исходным кодом](https://www.browserstack.com/open-source)
 
+### Лицензия
 
-### License
 Summernote may be freely distributed under the MIT license.
