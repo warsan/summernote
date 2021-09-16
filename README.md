@@ -102,4 +102,4 @@ https://github.com/summernote/summernote/blob/develop/.github/CONTRIBUTING.md
 
 ### Лицензия
 
-Summernote may be freely distributed under the MIT license.
+Summernote может свободно распространяться по лицензии MIT.
