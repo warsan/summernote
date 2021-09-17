@@ -15,14 +15,14 @@
   <!-- include summernote -->
   <link rel="stylesheet" href="../summernote-bs4.css">
   <script type="text/javascript" src="../summernote-bs4.js"></script>
-  <script type="text/javascript" src="../lang/summernote-ko-KR.js"></script>
+  <script type="text/javascript" src="../lang/summernote-ru-RU.js"></script>
 
   <link rel="stylesheet" href="example.css">
   <script type="text/javascript">
     $(document).ready(function () {
       var self = this;
 
-      // load github's emoji list
+      // загрузить список эмодзи с github
       $.ajax({
         url: 'https://api.github.com/emojis'
       }).then(function (data) {
@@ -30,7 +30,7 @@
         var emojiUrls = data;
 
         $('.summernote').summernote({
-          placeholder: 'Type text start with ":". For example, :smile or :+1:.',
+          placeholder: 'Введите текст, начинающийся с ":". Например, :smile или :+1:.',
           height: 300,
           hintDirection: 'top',
           hint: [{
@@ -59,8 +59,8 @@
 </head>
 <body>
 <div class="container">
-  <h1>Summernote with Hint Emoji</h1>
-  <p>This example uses GitHub emojis.</p>
+  <h1>Summernote с подсказкой Emoji</h1>
+  <p>В этом примере используются эмодзи GitHub.</p>
   <textarea class="summernote"></textarea>
 </div>
 </body>
