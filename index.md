@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+## Добро пожаловать на GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/warsan/summernote/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Вы можете использовать [редактор на GitHub](https://github.com/warsan/summernote/edit/gh-pages/index.md) для ведения и предварительного просмотра содержимого вашего сайта в файлах Markdown.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Всякий раз, когда вы фиксируете этот репозиторий, GitHub Pages будет запускать [Jekyll](https://jekyllrb.com/), чтобы перестроить страницы вашего сайта на основе содержимого ваших файлов Markdown.
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Markdown - это легкий и простой в использовании синтаксис для оформления текста. Она включает в себя соглашения для
 
 ```markdown
-Syntax highlighted code block
+Синтаксис выделенного блока кода
 
 # Header 1
 ## Header 2
 ### Header 3
 
-- Bulleted
-- List
+- Пунктуация
+- Список
 
-1. Numbered
-2. List
+1. Нумерация
 
-**Bold** and _Italic_ and `Code` text
+2. Список
 
-[Link](url) and ![Image](src)
+**Жирный** и _Италический_ и `Кодовый` текст
+
+[Link](url) и ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Более подробную информацию смотрите в [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+### Темы Jekyll
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/warsan/summernote/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Ваш сайт Pages будет использовать макет и стили темы Jekyll, выбранной вами в [настройках хранилища](https://github.com/warsan/summernote/settings/pages). Имя этой темы сохраняется в конфигурационном файле Jekyll `_config.yml`.
 
-### Support or Contact
+### Поддержка или контакт
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Возникли проблемы с Pages? Посмотрите нашу [документацию](https://docs.github.com/categories/github-pages-basics/) или [свяжитесь со службой поддержки](https://support.github.com/contact), и мы поможем вам разобраться.
