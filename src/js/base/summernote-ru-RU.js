@@ -3,9 +3,8 @@ import $ from 'jquery';
 $.summernote = $.summernote || {
   lang: {},
 };
-
 //(function($) {
-  $.extend($.summernote.lang, {
+$.extend($.summernote.lang, {
     'ru-RU': {
       font: {
         bold: 'Полужирный',
@@ -18,6 +17,7 @@ $.summernote = $.summernote || {
         subscript: 'Нижний индекс',
         superscript: 'Верхний индекс',
         size: 'Размер шрифта',
+        sizeunit: 'Единица измерения шрифта',
       },
       image: {
         image: 'Картинка',
@@ -25,6 +25,7 @@ $.summernote = $.summernote || {
         resizeFull: 'Восстановить размер',
         resizeHalf: 'Уменьшить до 50%',
         resizeQuarter: 'Уменьшить до 25%',
+        resizeNone: 'Оригинальный размер',
         floatLeft: 'Расположить слева',
         floatRight: 'Расположить справа',
         floatNone: 'Расположение по-умолчанию',
@@ -110,6 +111,7 @@ $.summernote = $.summernote || {
         setTransparent: 'Сделать прозрачным',
         reset: 'Сброс',
         resetToDefault: 'Восстановить умолчания',
+        cpSelect: 'Выбор',
       },
       shortcut: {
         shortcuts: 'Сочетания клавиш',
@@ -121,6 +123,7 @@ $.summernote = $.summernote || {
         extraKeys: 'Дополнительные комбинации',
       },
       help: {
+        'escape': 'Escape',
         'insertParagraph': 'Новый параграф',
         'undo': 'Отменить последнюю команду',
         'redo': 'Повторить последнюю команду',
