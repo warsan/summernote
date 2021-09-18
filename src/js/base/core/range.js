@@ -5,7 +5,7 @@ import lists from './lists';
 import dom from './dom';
 
 /**
- * return boundaryPoint from TextRange, inspired by Andy Na's HuskyRange.js
+ * возвращает borderPoint из TextRange, вдохновлённый HuskyRange.js Энди На
  *
  * @param {TextRange} textRange
  * @param {Boolean} isStart
@@ -67,7 +67,7 @@ function textRangeToPoint(textRange, isStart) {
 }
 
 /**
- * return TextRange from boundary point (inspired by google closure-library)
+ * возвращает TextRange из граничной точки (вдохновлено библиотекой google closure-library)
  * @param {BoundaryPoint} point
  * @return {TextRange}
  */
@@ -200,7 +200,7 @@ class WrappedRange {
   }
 
   /**
-   * Moves the scrollbar to start container(sc) of current range
+   * Перемещает полосу прокрутки к начальному контейнеру(ам) текущего диапазона
    *
    * @return {WrappedRange}
    */
