@@ -14,16 +14,16 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const date = (new Date()).toISOString().replace(/:\d+\.\d+Z$/, 'Z');
 const banner = `
-Super simple WYSIWYG editor v${pkg.version}
+Супер простой редактор WYSIWYG v${pkg.version}
 https://summernote.org
 
 
-Copyright 2013- Alan Hong and other contributors
-Summernote may be freely distributed under the MIT license.
+Copyright 2013- Алан Хонг и другие соавторы: 
+Summernote может свободно распространяться по лицензии MIT.
 
 Date: ${date}
 `;
-const minBanner = `Summernote v${pkg.version} | (c) 2013- Alan Hong and other contributors | MIT license`;
+const minBanner = `Summernote v${pkg.version} | (c) 2013- Алан Хонг и другие соавторы | лицензия MIT`;
 
 const productList = [
   'summernote',

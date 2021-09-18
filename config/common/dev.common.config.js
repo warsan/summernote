@@ -30,7 +30,7 @@ module.exports = {
     },
   },
   externals: {
-    jquery: 'jQuery', // dev includes jQuery by <script> tag
+    jquery: 'jQuery', // dev включает jQuery с помощью тега <script>
   },
   devServer: {
     port: 3000,
