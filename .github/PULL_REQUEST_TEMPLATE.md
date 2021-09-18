@@ -1,32 +1,32 @@
 <!--
-Thank you for taking the time to help us improve Summernote.
-Please be sure that you are not submitting changes made to the files in the `dist/` folder, and only to the files contained in the `src/` folder.
+Спасибо, что нашли время помочь нам улучшить Summernote.
+Пожалуйста, убедитесь, что вы не отправляете изменения, внесенные в файлы в папке `dist/`, а только в файлы, содержащиеся в папке `src/`.
 -->
-#### What does this PR do?
+#### Что делает этот PR?
 
-- awesome stuff
-- really cool feature
-- refactor X
+- потрясающий материал
+- очень классная функция
+- рефакторить X
 
-#### Where should the reviewer start?
+#### С чего должен начать рецензент?
 
-- start on the src/summernote.js
+- начните работу над файлом src/summernote.js
 
-#### How should this be manually tested?
+#### Как это должно быть проверено вручную?
 
-- click here and here
+- нажмите здесь и здесь
 
-#### Any background context you want to provide?
+#### Не хотите ли вы предоставить какой-либо контекст?
 
-- the gem needed to be updated...
+- драгоценный камень нуждался в обновлении...
 
-#### What are the relevant tickets?
-
-
-#### Screenshot (if for frontend)
+#### Что такое соответствующие билеты?
 
 
-### Checklist
+#### Скриншот (если для фронтенда)
 
-- [ ] Added relevant tests or not required
-- [ ] Didn't break anything
+
+### Контрольный список
+
+- [ ] Добавлены соответствующие тесты или они не требуются
+- [ ] Ничего не сломал

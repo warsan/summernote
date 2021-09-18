@@ -1,39 +1,39 @@
-## Contributing
-* Pull requests are welcome
-* Please `don't include dist/* files` on your commits.
+## Вклад
+* Запросы на исправление приветствуются
+* Пожалуйста, не включайте файлы `dist/*` в свои коммиты.
 
-## Coding convention
+## Соглашение о кодировании
 * eslint: https://eslint.org
 * eslint rule: https://github.com/summernote/summernote/blob/master/.eslintrc
 
-## Build summernote
+## Построить summernote
 
-Summernote uses [`yarn`](https://yarnpkg.com/) as a package manager.
+Summernote использует [`yarn`](https://yarnpkg.com/) в качестве менеджера пакетов.
 
 ```bash
 $ yarn install
 
-# build full version of summernote: dist/summernote.js
+# собрать полную версию summernote: dist/summernote.js
 $ yarn build
 
 ```
-At this point, you should now have a `dist/` directory populated with everything you need to use summernote.
+На данном этапе у вас должен быть каталог `dist/`, заполненный всем необходимым для работы с summernote.
 
-## Start local server for developing summernote.
-run local server with webpack-dev-server and watch.
+## Запустите локальный сервер для разработки Summernote.
+запустите локальный сервер с webpack-dev-server и наблюдайте.
 ```bash
 $ yarn dev
-# Open a browser on http://localhost:3000.
-# If you change source code, automatically reload your page.
+# Откройте браузер на http://localhost:3000.
+# Если вы измените исходный код, автоматически перезагрузите страницу.
 ```
 
-## Test summernote
-run tests with Karma and PhantomJS
+## Тест summernote
+запускать тесты с помощью Karma и PhantomJS
 ```bash
 $ yarn test
 ```
-If you want run tests on other browser,
-change the values for `browsers` properties in `karma.conf.js`.
+Если вы хотите запустить тесты в другом браузере,
+изменить значения для свойств `browsers` в файле `karma.conf.js`.
 
 ```javascript
 karma: {
@@ -45,33 +45,33 @@ karma: {
 
 ```
 
-Or, pass `--browsers` argument via `yarn test` command.
+Или передайте аргумент `--browsers` через команду `yarn test`.
 
 ```bash
 $ yarn test -- --browsers Safari,Firefox
 ```
 
-You can use `Chrome`, `ChromeCanary`, `Firefox`, `Opera`, `Safari`, `PhantomJS` and `IE` beside `PhantomJS`.
-Once you run `yarn test`, it will watch all JavaScript file. Therefore karma runs tests every time you change code.
+Вы можете использовать `Chrome`, `ChromeCanary`, `Firefox`, `Opera`, `Safari`, `PhantomJS` и `IE` рядом с `PhantomJS`.
+Как только вы запустите `yarn test`, он просмотрит все файлы JavaScript. Поэтому karma запускает тесты каждый раз, когда вы изменяете код.
 
-## Test a part of test
+## Тест часть теста
 
-If you would like to run some part of your test codes, use the watch mode.
+Если вы хотите запустить какую-то часть своих тестовых кодов, используйте режим просмотра.
 
 ```bash
 $ yarn test:watch
 ```
 
-`karma` will run test and keep waiting other test requests. And then, run `test:grep` in another terminal. Below shows how to run `LinkDialog` related tests only.
+`karma` запустит тест и будет ждать других запросов на тестирование. Затем запустите `test:grep` в другом терминале. Ниже показано, как запустить только тесты, связанные с `LinkDialog`.
 
 ```bash
 $ yarn test:grep LinkDialog
 ```
 
-## Prepush Hooks
-As part of this repo, we use [Husky](https://github.com/typicode/husky) for git hooks. We leverage the prepush hook to prevent bad commits.
+## Подготовительные крючки
+В рамках этого репозитория мы используем [Husky](https://github.com/typicode/husky) для git-хуков. Мы используем крючок prepush для предотвращения неудачных коммитов.
 
-## Document structure
+## Структура документа
 
 ```text
  - body container: <div class="note-editable">, <td>, <blockquote>, <ul>
