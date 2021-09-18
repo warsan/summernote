@@ -33,8 +33,8 @@ $.extend($.summernote.lang, {
       shapeCircle: "Форма: Круг",
       shapeThumbnail: "Форма: Миниатюра",
       shapeNone: "Форма: Нет",
-      dragImageHere: "Перетащите сюда картинку",
-      dropImage: "Перетащите картинку",
+      dragImageHere: "Перетащить сюда картинку",
+      dropImage: "Перетащить картинку",
       selectFromFiles: "Выбрать из файлов",
       maximumFileSize: "Максимальный размер файла",
       maximumFileSizeError: "Превышен максимальный размер файла",
@@ -104,7 +104,7 @@ $.extend($.summernote.lang, {
     },
     color: {
       recent: "Последний цвет",
-      more: "Еще цвета",
+      more: "Ещё цвета",
       background: "Цвет фона",
       foreground: "Цвет шрифта",
       transparent: "Прозрачный",
@@ -153,12 +153,12 @@ $.extend($.summernote.lang, {
       "linkDialog.show": 'Показать диалог "Ссылка"'
     },
     history: {
-      undo: "Отменить",
+      undo: "Отмена",
       redo: "Повтор"
     },
     specialChar: {
       specialChar: "SPECIAL CHARACTERS",
-      select: "Выберите спецсимволы"
+      select: "Выбрать спецсимволы"
     }
   }
 });
