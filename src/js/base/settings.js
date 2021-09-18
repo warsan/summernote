@@ -63,7 +63,7 @@ $.summernote = $.extend($.summernote, {
       tablePopover: TablePopover,
       videoDialog: VideoDialog,
       helpDialog: HelpDialog,
-      airPopover: AirPopover
+      airPopover: AirPopover,
     },
 
     buttons: {},
@@ -84,7 +84,7 @@ $.summernote = $.extend($.summernote, {
       ["para", ["ul", "ol", "paragraph"]],
       ["table", ["table"]],
       ["insert", ["link", "picture", "video"]],
-      ["view", ["fullscreen", "codeview", "help"]]
+      ["view", ["fullscreen", "codeview", "help"]],
     ],
 
     // popover
@@ -93,12 +93,12 @@ $.summernote = $.extend($.summernote, {
       image: [
         ["resize", ["resizeFull", "resizeHalf", "resizeQuarter", "resizeNone"]],
         ["float", ["floatLeft", "floatRight", "floatNone"]],
-        ["remove", ["removeMedia"]]
+        ["remove", ["removeMedia"]],
       ],
       link: [["link", ["linkDialogShow", "unlink"]]],
       table: [
         ["add", ["addRowDown", "addRowUp", "addColLeft", "addColRight"]],
-        ["delete", ["deleteRow", "deleteCol", "deleteTable"]]
+        ["delete", ["deleteRow", "deleteCol", "deleteTable"]],
       ],
       air: [
         ["color", ["color"]],
@@ -107,7 +107,7 @@ $.summernote = $.extend($.summernote, {
         ["table", ["table"]],
         ["insert", ["link", "picture"]],
         ["view", ["fullscreen", "codeview"]]
-      ]
+      ],
     },
 
     // air mode: встроенный редактор
@@ -159,7 +159,7 @@ $.summernote = $.extend($.summernote, {
       "Lucida Grande",
       "Tahoma",
       "Times New Roman",
-      "Verdana"
+      "Verdana",
     ],
     fontNamesIgnoreCheck: [],
     addDefaultFonts: true,
@@ -178,7 +178,7 @@ $.summernote = $.extend($.summernote, {
         "#CEC6CE",
         "#EFEFEF",
         "#F7F7F7",
-        "#FFFFFF"
+        "#FFFFFF",
       ],
       [
         "#FF0000",
@@ -188,7 +188,7 @@ $.summernote = $.extend($.summernote, {
         "#00FFFF",
         "#0000FF",
         "#9C00FF",
-        "#FF00FF"
+        "#FF00FF",
       ],
       [
         "#F7C6CE",
@@ -198,7 +198,7 @@ $.summernote = $.extend($.summernote, {
         "#CEDEE7",
         "#CEE7F7",
         "#D6D6E7",
-        "#E7D6DE"
+        "#E7D6DE",
       ],
       [
         "#E79C9C",
@@ -208,7 +208,7 @@ $.summernote = $.extend($.summernote, {
         "#A5C6CE",
         "#9CC6EF",
         "#B5A5D6",
-        "#D6A5BD"
+        "#D6A5BD",
       ],
       [
         "#E76363",
@@ -218,7 +218,7 @@ $.summernote = $.extend($.summernote, {
         "#73A5AD",
         "#6BADDE",
         "#8C7BC6",
-        "#C67BA5"
+        "#C67BA5",
       ],
       [
         "#CE0000",
@@ -228,7 +228,7 @@ $.summernote = $.extend($.summernote, {
         "#4A7B8C",
         "#3984C6",
         "#634AA5",
-        "#A54A7B"
+        "#A54A7B",
       ],
       [
         "#9C0000",
@@ -238,7 +238,7 @@ $.summernote = $.extend($.summernote, {
         "#104A5A",
         "#085294",
         "#311873",
-        "#731842"
+        "#731842",
       ],
       [
         "#630000",
@@ -248,8 +248,8 @@ $.summernote = $.extend($.summernote, {
         "#083139",
         "#003163",
         "#21104A",
-        "#4A1031"
-      ]
+        "#4A1031",
+      ],
     ],
 
     // http://chir.ag/projects/name-that-color/
@@ -262,7 +262,7 @@ $.summernote = $.extend($.summernote, {
         "Pale Slate",
         "Gallery",
         "Alabaster",
-        "White"
+        "White",
       ],
       [
         "Red",
@@ -272,7 +272,7 @@ $.summernote = $.extend($.summernote, {
         "Cyan",
         "Blue",
         "Electric Violet",
-        "Magenta"
+        "Magenta",
       ],
       [
         "Azalea",
@@ -282,7 +282,7 @@ $.summernote = $.extend($.summernote, {
         "Botticelli",
         "Tropical Blue",
         "Mischka",
-        "Twilight"
+        "Twilight",
       ],
       [
         "Tonys Pink",
@@ -292,7 +292,7 @@ $.summernote = $.extend($.summernote, {
         "Casper",
         "Perano",
         "Cold Purple",
-        "Careys Pink"
+        "Careys Pink",
       ],
       [
         "Mandy",
@@ -302,7 +302,7 @@ $.summernote = $.extend($.summernote, {
         "Gulf Stream",
         "Viking",
         "Blue Marguerite",
-        "Puce"
+        "Puce",
       ],
       [
         "Guardsman Red",
@@ -312,7 +312,7 @@ $.summernote = $.extend($.summernote, {
         "Smalt Blue",
         "Boston Blue",
         "Butterfly Bush",
-        "Cadillac"
+        "Cadillac",
       ],
       [
         "Sangria",
@@ -322,7 +322,7 @@ $.summernote = $.extend($.summernote, {
         "Eden",
         "Venice Blue",
         "Meteorite",
-        "Claret"
+        "Claret",
       ],
       [
         "Rosewood",
@@ -332,13 +332,13 @@ $.summernote = $.extend($.summernote, {
         "Tiber",
         "Midnight Blue",
         "Valentino",
-        "Loulou"
-      ]
+        "Loulou",
+      ],
     ],
 
     colorButton: {
       foreColor: "#000000",
-      backColor: "#FFFF00"
+      backColor: "#FFFF00",
     },
 
     lineHeights: ["1.0", "1.2", "1.4", "1.5", "1.6", "1.8", "2.0", "3.0"],
@@ -347,7 +347,7 @@ $.summernote = $.extend($.summernote, {
 
     insertTableMaxSize: {
       col: 10,
-      row: 10
+      row: 10,
     },
 
     // По умолчанию диалоги прикрепляются в контейнере.
@@ -375,13 +375,13 @@ $.summernote = $.extend($.summernote, {
       onMousedown: null,
       onMouseup: null,
       onPaste: null,
-      onScroll: null
+      onScroll: null,
     },
 
     codemirror: {
       mode: "text/html",
       htmlMode: true,
-      lineNumbers: true
+      lineNumbers: true,
     },
 
     codeviewFilter: true,
@@ -398,7 +398,7 @@ $.summernote = $.extend($.summernote, {
       "www.dailymotion.com",
       "player.youku.com",
       "jumpingbean.tv",
-      "v.qq.com"
+      "v.qq.com",
     ],
 
     keyMap: {
@@ -430,7 +430,7 @@ $.summernote = $.extend($.summernote, {
         "CTRL+NUM5": "formatH5",
         "CTRL+NUM6": "formatH6",
         "CTRL+ENTER": "insertHorizontalRule",
-        "CTRL+K": "linkDialog.show"
+        "CTRL+K": "linkDialog.show",
       },
 
       mac: {
@@ -461,8 +461,8 @@ $.summernote = $.extend($.summernote, {
         "CMD+NUM5": "formatH5",
         "CMD+NUM6": "formatH6",
         "CMD+ENTER": "insertHorizontalRule",
-        "CMD+K": "linkDialog.show"
-      }
+        "CMD+K": "linkDialog.show",
+      },
     },
     icons: {
       align: "note-icon-align",
@@ -511,7 +511,7 @@ $.summernote = $.extend($.summernote, {
       underline: "note-icon-underline",
       undo: "note-icon-undo",
       unorderedlist: "note-icon-unorderedlist",
-      video: "note-icon-video"
-    }
-  }
+      video: "note-icon-video",
+    },
+  },
 });
