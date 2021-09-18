@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 $.summernote = $.summernote || {
-  lang: {}
+  lang: {},
 };
 //(function($) {
 $.extend($.summernote.lang, {
