@@ -37,7 +37,7 @@ $.summernote = $.extend($.summernote, {
   lists: lists,
 
   options: {
-    langInfo: $.summernote.lang["en-US"],
+    langInfo: $.summernote.lang["ru-RU"],
     editing: true,
     modules: {
       editor: Editor,
