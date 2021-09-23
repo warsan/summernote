@@ -3,13 +3,10 @@
   "description": "Super simple WYSIWYG editor",
   "version": "0.8.18",
   "license": "MIT",
-  "keywords": [
-    "editor",
-    "WYSIWYG"
-  ],
+  "keywords": ["editor", "WYSIWYG"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/summernote/summernote.git"
+    "url": "https://github.com/warsan/summernote.git"
   },
   "author": {
     "name": "hackerwins",
