@@ -84,8 +84,9 @@ export default class Typing {
           ) {
             $(rng.sc.nextSibling).remove();
           }
-          const split = dom.splitTree(blockquote, rng.getStartPoint(), 
-            { isDiscardEmptySplits: true });
+          const split = dom.splitTree(blockquote, rng.getStartPoint(), {
+            isDiscardEmptySplits: true
+          });
           if (split) {
             split.parentNode.insertBefore(nextPara, split);
           } else {

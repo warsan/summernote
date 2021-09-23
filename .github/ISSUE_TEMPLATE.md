@@ -1,30 +1,30 @@
-Прежде чем отправить проблему, пожалуйста, убедитесь, что вы нашли уже открытые проблемы, а также вы можете найти уже существующие или известные проблемы или запросы функций на вкладке Проекты.
-Если вы дублируете уже открытый вопрос или вопрос, тесно связанный с вашим, который, по нашему мнению, также может решить вашу проблему, мы направим вас к этому вопросу и закроем этот.
-Так мы сможем легче отслеживать проблемы и стараться хранить информацию о них вместе.
+Before submitting an issue, please make sure to search for already open issues, and add to that, you can find already progressing or known issues or feature requests within the Projects tab.
+If your are duplicating an already open or issue closely related and that we think may also resolve your issue, we will reference you to that issue and close this one.
+This way we can track issues more easily, and try to keep issue information together.
 
-Спасибо вам и спасибо за использование Summernote.
+Thank you, and Thanks for using Summernote.
 
-В этой версии Summernote используется jQuery, если вы используете другую версию, пожалуйста, обратитесь к соответствующим репозиториям ниже:-
+This version of Summernote uses jQuery, if you are using a different version please refer to the relevant repositories below:-
 - [Angular](https://github.com/summernote/angular-summernote)
 - [dJango](https://github.com/summernote/django-summernote)
 - [Rails](https://github.com/summernote/summernote-rails)
 - [React](https://github.com/summernote/react-summernote)
 
-Если вы запрашиваете какую-либо функцию, пожалуйста, проверьте [Awesome-Summernote](https://github.com/summernote/awesome-summernote), чтобы узнать, был ли создан плагин, соответствующий вашим требованиям.
+If you are requesting for a feature please check [Awesome-Summernote](https://github.com/summernote/awesome-summernote) to see if there has been a plugin the suite's your requirements.
 
-Если вы хотите сообщить о проблеме с документацией на сайте Summernote, пожалуйста, подайте заявку по адресу (Summernote)[https://github.com/summernote/summernote.github.io].
+If you are wanting to report an issue with Documentation on the Summernote Website please file an issue at (Summernote)[https://github.com/summernote/summernote.github.io].
 
-Пожалуйста, ответьте на приведенные ниже вопросы, это поможет нам легче решить все возникающие у вас проблемы и направить вопрос к соответствующим специалистам, которые могут помочь в решении вашей проблемы или дать вам правильные ответы.
+Please answer the below questions, this will help us to more easily resolve whatever issues you are having, and direct the issue to the suitable people that can assist with your issue or to give you correct answers.
 
-#### Прежде чем сообщить о проблеме, пожалуйста, попробуйте выполнить следующие действия, так как это может сэкономить вам и нам много времени.
-- Убедитесь, что ваш браузер и скрипты обновлены, возможно, вам потребуется собрать Summernote, так как мы продолжаем исправлять проблемы, вы можете узнать, как это сделать в [СОПРОВОЖДАЮЩЕЙ документации](https://github.com/summernote/summernote/blob/develop/.github/CONTRIBUTING.md).
-- Попробуйте воспроизвести вашу проблему на пустой странице, чтобы снизить риск того, что другие сценарии будут вмешиваться в работу Summernote, создавая проблему.
-- Если проблема возникает в другом Script наряду с Summernote, пожалуйста, обратитесь к этому проекту, возможно, там уже есть исправления.
+#### Before reporting an issue please try the following, as this could save you and us a lot of time.
+- Check that your Browser and Scripts are up to date, you may need to build Summernote as we continue to fix issues, you can find out how in the [CONTRIBUTING Documentation](https://github.com/summernote/summernote/blob/develop/.github/CONTRIBUTING.md).
+- Try to replicate your issue on a blank page to reduce the risk of other Scripts interfering with Summernote producing the issue.
+- If another Script is producing the issue along with Summernote, please check with that project in case there are already fixes.
 
-#### Описание вашей проблемы или запроса:
-Пожалуйста, дайте краткое описание проблемы или запроса. Если вы его не предоставите (нам требуется больше информации, чем указано в названии), мы не сможем ускорить помощь в решении вашего вопроса или ускорить рассмотрение вашего запроса, и ваш вопрос может быть просто закрыт.
+#### Description of your Issue or Request:
+Please provide a short description of the issue or request. If you don't provide one (we require more information that just what the Title says), we can't expedite helping to fix your issue or expedite your request, and your issue may simply get closed.
 
-#### шаги для воспроизведения (При необходимости добавьте ещё):
+#### steps to reproduce (Add more if necessary):
 1.
 
 2.
@@ -32,15 +32,15 @@
 3.
 
 
-#### Какую операционную систему, браузер и версию, а также версию Summernote вы используете:
-Это поможет найти и решить любые проблемы, поставьте знак "х" внутри скобок или, если нужно, подробно опишите каждый вариант.
-1. Операционная система:
+#### What is your Operating System, Browser and Version and Summernote Version you are using:
+This can help find and resolve any issues, place an x inside the brackets or if relevant elaborate after each choice.
+1. Operating System:
 [ ] Microsoft Windows
 [ ] Apple
 [ ] Linux
 [ ] All
 
-2. Браузер и версия:
+2. Browser and Version:
 [ ] Brave
 [ ] Chrome
 [ ] Edge
@@ -50,14 +50,14 @@
 [ ] Safari
 [ ] Other (Specify):
 
-3. Summernote Version, поставьте знак x внутри скобок:
+3. Summernote Version, place an x inside the brackets:
 [ ] BS3
 [ ] BS4
 [ ] Lite
 [ ] All
 
-#### скриншот проблемы
-Добавьте скриншот, который показывает вашу проблему (если необходимо).
-Вы можете сделать [gif из Recordit](http://www.recordit.co/).
+#### screenshot of issue
+Add screenshot which shows your issue(if needed).
+You can make [gif from Recordit](http://www.recordit.co/).
 
-Если вы можете сделать проблему с помощью jsfiddle(https://jsfiddle.net/), мы сможем сэкономить время на воспроизведение проблемы.
+If you can make the issue using jsfiddle(https://jsfiddle.net/), We can save time to reproduce the problem.

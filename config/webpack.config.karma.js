@@ -1,11 +1,11 @@
 const config = require('./webpack.config.dev');
 
-// Не включайте вывод/ввод - karma-webpack не поддерживает его
+// Do not include output / entry - karma-webpack does not support it
 delete config.entry;
 delete config.output.filename;
 delete config.output.path;
 
-// Показывать только ошибки при использовании кармы
+// Show only errors while using karma
 config.stats = 'errors-only';
 
 module.exports = config;
