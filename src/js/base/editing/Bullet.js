@@ -256,7 +256,7 @@ export default class Bullet {
   /**
    * @method findList
    *
-   * Нет данных (истекло время ожидания отправки данных).
+   * 
    *
    * @param {HTMLNode} ListItem
    * @return {Array[]}
@@ -270,7 +270,7 @@ export default class Bullet {
   /**
    * @method findNextSiblings
    *
-   * Finds all list item siblings that follow it
+   * Находит все братья и сестры элемента списка, которые следуют за ним
    *
    * @param {HTMLNode} ListItem
    * @return {HTMLNode}

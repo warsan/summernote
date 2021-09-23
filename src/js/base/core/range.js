@@ -5,7 +5,7 @@ import lists from './lists';
 import dom from './dom';
 
 /**
- * возвращает borderPoint из TextRange, вдохновлённый HuskyRange.js Энди На
+ * возвращает borderPoint из TextRange, вдохновленный  Энди На HuskyRange.js
  *
  * @param {TextRange} textRange
  * @param {Boolean} isStart
@@ -47,7 +47,7 @@ function textRangeToPoint(textRange, isStart) {
       curTextNode = curTextNode.nextSibling;
     }
 
-    // [workaround] enforce IE to re-reference curTextNode, hack
+    // [обходной путь] заставить IE повторно ссылаться на curTextNode, взлом
     const dummy = curTextNode.nodeValue; // eslint-disable-line
 
     if (isStart && curTextNode.nextSibling && dom.isText(curTextNode.nextSibling) &&
@@ -108,13 +108,13 @@ function pointToTextRange(point) {
 }
 
 /**
-   * Wrapped Range
+   * Диапазон обёртывания
    *
    * @constructor
-   * @param {Node} sc - start container
-   * @param {Number} so - start offset
-   * @param {Node} ec - end container
-   * @param {Number} eo - end offset
+   * @param {Node} sc - стартовый контейнер
+   * @param {Number} so - начальное смещение
+   * @param {Node} ec - конечный контейнер
+   * @param {Number} eo - конечное смещение
    */
 class WrappedRange {
   constructor(sc, so, ec, eo) {
@@ -123,19 +123,19 @@ class WrappedRange {
     this.ec = ec;
     this.eo = eo;
 
-    // isOnEditable: judge whether range is on editable or not
+    // isOnEditable: судить о том, является ли диапазон редактируемым или нет
     this.isOnEditable = this.makeIsOn(dom.isEditable);
-    // isOnList: judge whether range is on list node or not
+    // isOnList: судить о том, находится ли диапазон в узле списка или нет
     this.isOnList = this.makeIsOn(dom.isList);
-    // isOnAnchor: judge whether range is on anchor node or not
+    // isOnAnchor: судить о том, находится ли диапазон на якорном узле или нет
     this.isOnAnchor = this.makeIsOn(dom.isAnchor);
-    // isOnCell: judge whether range is on cell node or not
+    // isOnCell: определить, находится ли диапазон на узле ячейки или нет
     this.isOnCell = this.makeIsOn(dom.isCell);
-    // isOnData: judge whether range is on data node or not
+    // isOnData: судить о том, находится ли диапазон на узле данных или нет
     this.isOnData = this.makeIsOn(dom.isData);
   }
 
-  // nativeRange: get nativeRange from sc, so, ec, eo
+  // nativeRange: получить nativeRange из sc, so, ec, eo
   nativeRange() {
     if (env.isW3CRangeSupport) {
       const w3cRange = document.createRange();
@@ -182,7 +182,7 @@ class WrappedRange {
   }
 
   /**
-   * select update visible range
+   * выберите обновление видимого диапазона
    */
   select() {
     const nativeRng = this.nativeRange();
@@ -219,8 +219,8 @@ class WrappedRange {
   normalize() {
     /**
      * @param {BoundaryPoint} point
-     * @param {Boolean} isLeftToRight - true: prefer to choose right node
-     *                                - false: prefer to choose left node
+     * @param {Boolean} isLeftToRight - true: предпочитают выбирать правый узел
+     *                                - false: предпочитают выбирать левый узел
      * @return {BoundaryPoint}
      */
     const getVisiblePoint = function(point, isLeftToRight) {
@@ -228,13 +228,13 @@ class WrappedRange {
         return point;
       }
 
-      // Just use the given point [XXX:Adhoc]
-      //  - case 01. if the point is on the middle of the node
-      //  - case 02. if the point is on the right edge and prefer to choose left node
-      //  - case 03. if the point is on the left edge and prefer to choose right node
-      //  - case 04. if the point is on the right edge and prefer to choose right node but the node is void
-      //  - case 05. if the point is on the left edge and prefer to choose left node but the node is void
-      //  - case 06. if the point is on the block node and there is no children
+      // Просто используйте данный пункт [XXX:Adhoc].
+      //  - case 01. если точка находится на середине узла
+      //  - case 02. если точка находится на правом краю и предпочтительнее выбрать левый узел
+      //  - case 03. если точка находится на левом краю и предпочитает выбрать правый узел
+      //  - case 04. если точка находится на правом ребре и предпочитает выбрать правый узел, но узел не существует
+      //  - case 05. если точка находится на левом ребре и предпочтительно выбрать левый узел, но узел не существует
+      //  - case 06. если точка находится на блочном узле и не имеет детей
       if (dom.isVisiblePoint(point)) {
         if (!dom.isEdgePoint(point) ||
             (dom.isRightEdgePoint(point) && !isLeftToRight) ||
@@ -246,7 +246,7 @@ class WrappedRange {
         }
       }
 
-      // point on block's edge
+      // точка на краю блока
       const block = dom.ancestor(point.node, dom.isBlock);
       let hasRightNode = false;
 
@@ -262,11 +262,11 @@ class WrappedRange {
       }
 
       if (hasRightNode || hasLeftNode) {
-        // returns point already on visible point
+        // возвращает точку, которая уже находится на видимой точке
         if (dom.isVisiblePoint(point)) {
           return point;
         }
-        // reverse direction
+        // обратное направление
         isLeftToRight = !isLeftToRight;
       }
 
@@ -287,9 +287,9 @@ class WrappedRange {
   }
 
   /**
-   * returns matched nodes on range
+   * возвращает совпадающие узлы по диапазону
    *
-   * @param {Function} [pred] - predicate function
+   * @param {Function} [pred] - функция предиката
    * @param {Object} [options]
    * @param {Boolean} [options.includeAncestor]
    * @param {Boolean} [options.fullyContains]
@@ -301,7 +301,7 @@ class WrappedRange {
     const includeAncestor = options && options.includeAncestor;
     const fullyContains = options && options.fullyContains;
 
-    // TODO compare points and sort
+    // TODO сравнивать баллы и сортировать
     const startPoint = this.getStartPoint();
     const endPoint = this.getEndPoint();
 
@@ -336,7 +336,7 @@ class WrappedRange {
   }
 
   /**
-   * returns commonAncestor of range
+   * возвращает общий предок диапазона
    * @return {Element} - commonAncestor
    */
   commonAncestor() {
@@ -344,9 +344,9 @@ class WrappedRange {
   }
 
   /**
-   * returns expanded range by pred
+   * Возвращает диапазон расширений по умолчанию 
    *
-   * @param {Function} pred - predicate function
+   * @param {Function} pred - функция предикатов 
    * @return {WrappedRange}
    */
   expand(pred) {
@@ -390,7 +390,7 @@ class WrappedRange {
   }
 
   /**
-   * splitText on range
+   * разделить текст по диапазону 
    */
   splitText() {
     const isSameContainer = this.sc === this.ec;
@@ -419,7 +419,7 @@ class WrappedRange {
   }
 
   /**
-   * delete contents on range
+   * Удалить содержимое диапазона 
    * @return {WrappedRange}
    */
   deleteContents() {
@@ -432,14 +432,14 @@ class WrappedRange {
       fullyContains: true,
     });
 
-    // find new cursor point
+    // поиск новых световых точек 
     const point = dom.prevPointUntil(rng.getStartPoint(), function(point) {
       return !lists.contains(nodes, point.node);
     });
 
     const emptyParents = [];
     $.each(nodes, function(idx, node) {
-      // find empty parents
+      // найти родителей 
       const parent = node.parentNode;
       if (point.node !== parent && dom.nodeLength(parent) === 1) {
         emptyParents.push(parent);
@@ -447,7 +447,7 @@ class WrappedRange {
       dom.remove(node, false);
     });
 
-    // remove empty parents
+    // удалить пустых родителей
     $.each(emptyParents, function(idx, node) {
       dom.remove(node, false);
     });
@@ -461,7 +461,7 @@ class WrappedRange {
   }
 
   /**
-   * makeIsOn: return isOn(pred) function
+   * makeIsOn: функция return isOn(pred)
    */
   makeIsOn(pred) {
     return function() {
@@ -484,14 +484,14 @@ class WrappedRange {
   }
 
   /**
-   * returns whether range was collapsed or not
+   * возвращает, был ли диапазон свернут или нет
    */
   isCollapsed() {
     return this.sc === this.ec && this.so === this.eo;
   }
 
   /**
-   * wrap inline nodes which children of body with paragraph
+   * обернуть инлайн-узлы, которые являются дочерними элементами body, абзацем
    *
    * @return {WrappedRange}
    */
@@ -502,7 +502,7 @@ class WrappedRange {
     }
 
     /**
-     * [workaround] firefox often create range on not visible point. so normalize here.
+     * [обходной путь] firefox часто создает диапазон на невидимой точке. так что нормализуйте здесь.
      *  - firefox: |<p>text</p>|
      *  - chrome: <p>|text|</p>
      */
@@ -511,7 +511,7 @@ class WrappedRange {
       return rng;
     }
 
-    // find inline top ancestor
+    // найти встроенный верхний предок
     let topAncestor;
     if (dom.isInline(rng.sc)) {
       const ancestors = dom.listAncestor(rng.sc, func.not(dom.isInline));
@@ -524,11 +524,11 @@ class WrappedRange {
     }
 
     if (topAncestor) {
-      // siblings not in paragraph
+      // братья и сёстры не в параграфе
       let inlineSiblings = dom.listPrev(topAncestor, dom.isParaInline).reverse();
       inlineSiblings = inlineSiblings.concat(dom.listNext(topAncestor.nextSibling, dom.isParaInline));
 
-      // wrap with paragraph
+      // обернуть абзацем
       if (inlineSiblings.length) {
         const para = dom.wrap(lists.head(inlineSiblings), 'p');
         dom.appendChildNodes(para, lists.tail(inlineSiblings));
@@ -539,7 +539,7 @@ class WrappedRange {
   }
 
   /**
-   * insert node at current cursor
+   * вставить узел в текущий курсор
    *
    * @param {Node} node
    * @return {Node}
@@ -565,7 +565,7 @@ class WrappedRange {
   }
 
   /**
-   * insert html at current cursor
+   * вставить html в текущий курсор
    */
   pasteHTML(markup) {
     markup = $.trim(markup);
@@ -593,7 +593,7 @@ class WrappedRange {
   }
 
   /**
-   * returns text in range
+   * возвращает текст в диапазоне
    *
    * @return {String}
    */
@@ -603,9 +603,9 @@ class WrappedRange {
   }
 
   /**
-   * returns range for word before cursor
+   * возвращает диапазон для слова перед курсором
    *
-   * @param {Boolean} [findAfter] - find after cursor, default: false
+   * @param {Boolean} [findAfter] - найти после курсора, default: false
    * @return {WrappedRange}
    */
   getWordRange(findAfter) {
@@ -634,9 +634,9 @@ class WrappedRange {
   }
 
   /**
-   * returns range for words before cursor
+   * возвращает диапазон для слов перед курсором
    *
-   * @param {Boolean} [findAfter] - find after cursor, default: false
+   * @param {Boolean} [findAfter] - найти после курсора, default: false
    * @return {WrappedRange}
    */
   getWordsRange(findAfter) {
@@ -665,7 +665,7 @@ class WrappedRange {
   }
 
   /**
-   * returns range for words before cursor that match with a Regex
+   * возвращает диапазон для слов перед курсором, которые совпадают с Regex
    *
    * example:
    *  range: 'hi @Peter Pan'
@@ -710,7 +710,7 @@ class WrappedRange {
   }
 
   /**
-   * create offsetPath bookmark
+   * создать закладку offsetPath
    *
    * @param {Node} editable
    */
@@ -728,7 +728,7 @@ class WrappedRange {
   }
 
   /**
-   * create offsetPath bookmark base on paragraph
+   * создать закладку OffsetPath на основе абзаца
    *
    * @param {Node[]} paras
    */
@@ -756,26 +756,26 @@ class WrappedRange {
 }
 
 /**
- * Data structure
- *  * BoundaryPoint: a point of dom tree
- *  * BoundaryPoints: two boundaryPoints corresponding to the start and the end of the Range
+ * Структура данных
+ *  * BoundaryPoint: точка дерева dom
+ *  * BoundaryPoints: две граничные точки, соответствующие началу и концу диапазона
  *
- * See to http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position
+ * См. http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Position
  */
 export default {
   /**
-   * create Range Object From arguments or Browser Selection
+   * создание объекта Range из аргументов или выбора браузера
    *
-   * @param {Node} sc - start container
-   * @param {Number} so - start offset
-   * @param {Node} ec - end container
-   * @param {Number} eo - end offset
+   * @param {Node} sc - стартовый контейнер
+   * @param {Number} so - начальное смещение
+   * @param {Node} ec - конечный контейнер
+   * @param {Number} eo - конечное смещение
    * @return {WrappedRange}
    */
   create: function(sc, so, ec, eo) {
     if (arguments.length === 4) {
       return new WrappedRange(sc, so, ec, eo);
-    } else if (arguments.length === 2) { // collapsed
+    } else if (arguments.length === 2) { // обрушился
       ec = sc;
       eo = so;
       return new WrappedRange(sc, so, ec, eo);
@@ -805,8 +805,8 @@ export default {
       if (!selection || selection.rangeCount === 0) {
         return null;
       } else if (dom.isBody(selection.anchorNode)) {
-        // Firefox: returns entire body as range on initialization.
-        // We won't never need it.
+        // Firefox: возвращает всё тело как диапазон при инициализации.
+        // Нам это никогда не понадобится.
         return null;
       }
 
@@ -825,7 +825,7 @@ export default {
       let startPoint = textRangeToPoint(textRangeStart, true);
       let endPoint = textRangeToPoint(textRangeEnd, false);
 
-      // same visible point case: range was collapsed.
+      // тот же видимый точечный корпус: диапазон был разрушен.
       if (dom.isText(startPoint.node) && dom.isLeftEdgePoint(startPoint) &&
         dom.isTextNode(endPoint.node) && dom.isRightEdgePoint(endPoint) &&
         endPoint.node.nextSibling === startPoint.node) {
@@ -844,7 +844,7 @@ export default {
   /**
    * @method
    *
-   * create WrappedRange from node
+   * создать WrappedRange из узла
    *
    * @param {Node} node
    * @return {WrappedRange}
@@ -855,7 +855,7 @@ export default {
     let ec = node;
     let eo = dom.nodeLength(ec);
 
-    // browsers can't target a picture or void node
+    // Браузеры не могут нацеливаться на изображение или узел пустоты
     if (dom.isVoid(sc)) {
       so = dom.listPrev(sc).length - 1;
       sc = sc.parentNode;
@@ -872,7 +872,7 @@ export default {
   },
 
   /**
-   * create WrappedRange from node after position
+   * создать WrappedRange из узла после позиции
    *
    * @param {Node} node
    * @return {WrappedRange}
@@ -882,7 +882,7 @@ export default {
   },
 
   /**
-   * create WrappedRange from node after position
+   * создать WrappedRange из узла после позиции
    *
    * @param {Node} node
    * @return {WrappedRange}
@@ -894,7 +894,7 @@ export default {
   /**
    * @method
    *
-   * create WrappedRange from bookmark
+   * создать WrappedRange из закладки
    *
    * @param {Node} editable
    * @param {Object} bookmark
@@ -911,7 +911,7 @@ export default {
   /**
    * @method
    *
-   * create WrappedRange from paraBookmark
+   * создать WrappedRange из paraBookmark
    *
    * @param {Object} bookmark
    * @param {Node[]} paras

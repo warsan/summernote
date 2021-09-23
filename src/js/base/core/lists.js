@@ -1,7 +1,7 @@
 import func from './func';
 
 /**
- * returns the first item of an array.
+ * возвращает первый элемент массива.
  *
  * @param {Array} array
  */
@@ -10,7 +10,7 @@ function head(array) {
 }
 
 /**
- * returns the last item of an array.
+ * возвращает последний элемент массива.
  *
  * @param {Array} array
  */
@@ -19,7 +19,7 @@ function last(array) {
 }
 
 /**
- * returns everything but the last entry of the array.
+ * возвращает всё, кроме последней записи массива.
  *
  * @param {Array} array
  */
@@ -28,7 +28,7 @@ function initial(array) {
 }
 
 /**
- * returns the rest of the items in an array.
+ * возвращает остальные элементы массива.
  *
  * @param {Array} array
  */
@@ -37,7 +37,7 @@ function tail(array) {
 }
 
 /**
- * returns item of array
+ * возвращает элемент массива
  */
 function find(array, pred) {
   for (let idx = 0, len = array.length; idx < len; idx++) {
