@@ -1,11 +1,11 @@
-## Отладка с помощью VSCode
+## Debug with VSCode
 
-Вы можете отлаживать модульные тесты с помощью VSCode, выполнив следующие действия:
-(По материалам [статьи](http://blog.mlewandowski.com/Debugging-Karma-tests-with-VSCode.html))
+You can debug unit tests with VSCode following the steps:
+(Based on [article](http://blog.mlewandowski.com/Debugging-Karma-tests-with-VSCode.html))
 
-1. Установите [VsCode](https://code.visualstudio.com/docs/setup/setup-overview)
-2. Установите расширение [debugger-for-chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome).
-3. Создайте файл launch.json в папке ~/.vscode со следующей конфигурацией:
+1. Install [VsCode](https://code.visualstudio.com/docs/setup/setup-overview)
+2. Install [debugger-for-chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) extension.
+3. Create launch.json file on ~/.vscode folder with follow config:
 ```json
 {
   "version": "0.2.0",
@@ -25,59 +25,59 @@
   ]
 }
 ```
-4. В терминале запустите тест с помощью команды:
+4. On terminal, run test with command:
 ```
 yarn test:debug
 ```
-4. Открыть vscode
-5. Установите точку останова на коде
-6. Нажмите F5 для запуска Debug и дождитесь остановки на точке останова
+4. Open vscode
+5. Set breakpoint on code
+6. Press F5 to run Debug and wait to stop on breakpoint
 
-## Опубликовать новую версию
+## Publish new version
 
-### 1. `develop` на `master`
+### 1. `develop` to `master`
 
-Отправьте pull request `develop` на репозиторий `master` на github и объедините его.
+Send pull request `develop` to `master` on github repository and merge it.
 https://github.com/summernote/summernote/compare/master...develop
 
 
-### 2. Сборка `dist` файлов
+### 2. Build dist files
 
-Соберите файлы `dist` и переместите их в master
+Build dist files and push to master
 ```bash
-# ветвь изменений
+# change branch
 git checkout master
 
-# получить все изменения
+# fetch all changes
 git pull
 
-# Увеличение версии в файле package.json
+# Bump version in package.json
 
-# сборка файлов dist и бинарных файлов(.zip) для публикации релиза
+# build dist files and binary(.zip) for release post
 yarn build
 
-# Зафиксировать и добавить метку для новой версии
+# Commit and add tag for new version
 git commit -a -m "Update dist files"
 git tag -a "<new-version>"
 
-# Передача новых файлов dist и тегов в удаленное хранилище.
+# Push new dist files and tags to remote repository.
 git push origin --tags
 ```
 
-### 3. Выпуск новой версии
-Опубликовать на github заметку о выпуске с новой версией тега
+### 3. Release new version
+Post release note with new tag version on github
 
 https://github.com/summernote/summernote/releases/new
 
-### 4. Опубликовать
+### 4. Publish
 
-Публикация в реестре npm
+Publish on npm registry
 ```bash
 yarn publish
 ```
 
-### 5. Обновление summernote.github.io
-Обновите версию summernote в `_config.yml`.
+### 5. Update summernote.github.io
+Update summernote version in `_config.yml`.
 
-### 6. Обновление разъёмов
-Попросите сопровождающих каждого коннектора обновить информацию о пакете.
+### 6. Update connectors
+Request maintainers of each connector to update package information.

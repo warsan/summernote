@@ -159,6 +159,9 @@ $.extend($.summernote.lang, {
     specialChar: {
       specialChar: 'SPECIAL CHARACTERS',
       select: 'Select Special characters',
-    }, //output: { noSelection: 'No Selection Made!', },
+    },
+    output: {
+      noSelection: 'No Selection Made!',
+    },
   },
 });
