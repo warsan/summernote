@@ -3,7 +3,8 @@ import $ from 'jquery';
 $.summernote = $.summernote || {
   lang: {},
 };
-  $.extend($.summernote.lang, {
+  
+$.extend($.summernote.lang, {
     'ru-RU': {
       font: {
         bold: 'Полужирный',
