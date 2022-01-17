@@ -1,20 +1,20 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD. Зарегистрируйтесь как анонимный модуль.
+    // AMD. Register as an anonymous module.
     define(['jquery'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node/CommonJS
     module.exports = factory(require('jquery'));
   } else {
-    // Глобальные файлы браузера
+    // Browser globals
     factory(window.jQuery);
   }
 }(function($) {
-  // привлечь некоторые основные функции Летнота
+  // pull in some summernote core functions
   var ui = $.summernote.ui;
   var dom = $.summernote.dom;
 
-  // определить плагин всплывающего окна
+  // define the popover plugin
   var DataBasicPlugin = function(context) {
     var self = this;
     var options = context.options;
@@ -22,7 +22,7 @@
 
     self.icon = '<i class="fa fa-object-group"/>';
 
-    // добавить кнопку контекстного меню для диалога
+    // add context menu button for dialog
     context.memo('button.databasic', function() {
       return ui.button({
         contents: self.icon,
@@ -31,7 +31,7 @@
       }).render();
     });
 
-    // добавить всплывающую кнопку редактирования
+    // add popover edit button
     context.memo('button.databasicDialog', function() {
       return ui.button({
         contents: self.icon,
@@ -40,7 +40,7 @@
       }).render();
     });
 
-    //  добавить кнопки с размером всплывающего окна
+    //  add popover size buttons
     context.memo('button.databasicSize100', function() {
       return ui.button({
         contents: '<span class="note-fontsize-10">100%</span>',
@@ -65,9 +65,9 @@
 
     self.events = {
       'summernote.init': function(we, e) {
-        // обновление существующих контейнеров
+        // update existing containers
         $('data.ext-databasic', e.editable).each(function() { self.setContent($(this)); });
-        // TODO: сделать снимок отмены...
+        // TODO: make this an undo snapshot...
       },
       'summernote.keyup summernote.mouseup summernote.change summernote.scroll': function() {
         self.update();
@@ -78,7 +78,7 @@
     };
 
     self.initialize = function() {
-      // создание диалоговой разметки
+      // create dialog markup
       var $container = options.dialogsInBody ? $(document.body) : context.layoutInfo.editor;
 
       var body = '<div class="form-group row-fluid">' +
@@ -94,7 +94,7 @@
         footer: footer,
       }).render().appendTo($container);
 
-      // создать всплывающее окно
+      // create popover
       self.$popover = ui.popover({
         className: 'ext-databasic-popover',
       }).render().appendTo('body');
@@ -111,7 +111,7 @@
     };
 
     self.update = function() {
-      // Предотвращение фокусировки на редактируемом объекте при выполнении функции invoke('code')
+      // Prevent focusing on editable when invoke('code') is executed
       if (!context.invoke('editor.hasFocus')) {
         self.hidePopover();
         return;
@@ -132,14 +132,14 @@
             top: pos.top,
           });
 
-          // сохранить цель редактора, чтобы кнопки размера изменяли размер контейнера
+          // save editor target to let size buttons resize the container
           context.invoke('editor.saveTarget', $data[0]);
 
           visible = true;
         }
       }
 
-      // скрыть, если не видно
+      // hide if not visible
       if (!visible) {
         self.hidePopover();
       }
@@ -149,7 +149,7 @@
       self.$popover.hide();
     };
 
-    // определить диалог плагина
+    // define plugin dialog
     self.getInfo = function() {
       var rng = context.invoke('editor.createRange');
 
@@ -157,7 +157,7 @@
         var $data = $(rng.sc).closest('data.ext-databasic');
 
         if ($data.length) {
-          // Получение первого узла в диапазоне (для редактирования).
+          // Get the first node on range(for edit).
           return {
             node: $data,
             test: $data.attr('data-test'),
@@ -182,9 +182,9 @@
       var $node = $('<data class="ext-databasic"></data>');
 
       if ($node) {
-        // сохранить узел в информационной структуре
+        // save node to info structure
         info.node = $node;
-        // вставить узел в редактор dom
+        // insert node into editor dom
         context.invoke('editor.insertNode', $node[0]);
       }
 
@@ -199,16 +199,16 @@
       self
         .openDialog(info)
         .then(function(dialogInfo) {
-          // [обходной путь] скрытие диалогового окна перед восстановлением диапазона для фокуса диапазона в IE
+          // [workaround] hide dialog before restore range for IE range focus
           ui.hideDialog(self.$dialog);
           context.invoke('editor.restoreRange');
 
-          // вставить новый узел
+          // insert a new node
           if (newNode) {
             self.createNode(info);
           }
 
-          // обновить информацию с помощью диалоговой информации
+          // update info with dialog info
           $.extend(info, dialogInfo);
 
           self.updateNode(info);
@@ -243,7 +243,7 @@
               deferred.resolve({ test: $inpTest.val() });
             });
 
-          // кнопка сохранения инициалов
+          // init save button
           ui.toggleBtn($saveBtn, $inpTest.val());
         });
 
@@ -261,7 +261,7 @@
     };
   };
 
-  // Продлевает летний период
+  // Extends summernote
   $.extend(true, $.summernote, {
     plugins: {
       databasic: DataBasicPlugin,
@@ -275,7 +275,7 @@
       },
     },
 
-    // добавляет тексты локализации
+    // add localization texts
     lang: {
       'en-US': {
         databasic: {

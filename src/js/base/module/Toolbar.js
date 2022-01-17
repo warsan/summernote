@@ -65,7 +65,7 @@ export default class Toolbar {
     const toolbarHeight = this.$toolbar.height();
     const statusbarHeight = this.$statusbar.height();
 
-    // проверить, использует ли веб-приложение в настоящее время другую статическую панель
+    // check if the web app is currently using another static bar
     let otherBarHeight = 0;
     if (this.options.otherStaticBar) {
       otherBarHeight = $(this.options.otherStaticBar).outerHeight();
