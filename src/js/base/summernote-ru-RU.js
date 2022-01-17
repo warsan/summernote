@@ -5,7 +5,7 @@ $.summernote = $.summernote || {
 };
   
 $.extend($.summernote.lang, {
-    'ru-RU': {
+  'ru-RU': {
       font: {
         bold: 'Полужирный',
         italic: 'Курсив',
