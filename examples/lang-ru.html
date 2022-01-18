@@ -23,7 +23,14 @@
       $('.summernote').summernote({
         height: 200,
         tabsize: 2,
-        lang: 'ru-RU'
+        lang: 'ru-RU',
+        codemirror: {
+          CodeMirrorConstructor: window.CodeMirror,
+          mode: 'text/html',
+          htmlMode: true,
+          lineNumbers: true,
+          theme: 'monokai'
+        }
       });
     });
   </script>
