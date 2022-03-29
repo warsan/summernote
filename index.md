@@ -1,3 +1,32 @@
+---
+
+<html>
+<head>
+<!-- включить библиотеки (jQuery, bootstrap) -->
+<script
+  type="text/javascript"
+  src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+></script>
+<link
+  rel="stylesheet"
+  href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"
+/>
+<script
+  type="text/javascript"
+  src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"
+></script>
+
+<!-- включить summernote css/js-->
+<link href="../summernote.css" rel="stylesheet" />
+<script src="../summernote.js"></script>
+</head>
+<body>
+<div id="summernote">Здравствуйте, Саммернот</div>
+</body>
+</html>
+
+---
+
 ### Установка и зависимости
 
 Summernote построен на [jQuery](http://jquery.com/).
@@ -28,7 +57,7 @@ Summernote построен на [jQuery](http://jquery.com/).
 
 #### 2. Нацелить элемент
 
-Затем поместите тег `div` куда-нибудь в тег `body`. Этот элемент будет заменен редактором summernote.
+Затем поместите тег `div` куда-нибудь в тег `body`. Этот элемент будет заменён редактором summernote.
 
 ```html
 <div id="summernote">Здравствуйте, Саммернот</div>
