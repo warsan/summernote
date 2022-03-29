@@ -1,7 +1,13 @@
 ---
+layout: post
+title: Ведение блога как хакер
+---
 
-<html>
+```
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <!-- включить библиотеки (jQuery, bootstrap) -->
 <script
   type="text/javascript"
@@ -24,8 +30,7 @@
 <div id="summernote">Здравствуйте, Саммернот</div>
 </body>
 </html>
-
----
+```
 
 ### Установка и зависимости
 
