@@ -1,5 +1,8 @@
 ---
+layout: post
+title: Ведение блога как хакер
 ---
+
 # summernote
 Супер простой редактор WYSIWYG
 
