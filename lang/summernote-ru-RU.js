@@ -149,7 +149,7 @@
       },
       specialChar: {
         specialChar: 'SPECIAL CHARACTERS',
-        select: 'Select Special characters',
+        select: 'Выберите спец-символы',
       },
     },
   });
