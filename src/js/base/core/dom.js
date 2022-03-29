@@ -9,7 +9,7 @@ const ZERO_WIDTH_NBSP_CHAR = '\ufeff';
 /**
  * @method isEditable
  *
- * returns whether node is `note-editable` or not.
+ * возвращает, является ли узел `note-editable` или нет.
  *
  * @param {Node} node
  * @return {Boolean}
@@ -21,7 +21,7 @@ function isEditable(node) {
 /**
  * @method isControlSizing
  *
- * returns whether node is `note-control-sizing` or not.
+ * возвращает, является ли узел `note-control-sizing` или нет.
  *
  * @param {Node} node
  * @return {Boolean}
@@ -33,7 +33,7 @@ function isControlSizing(node) {
 /**
  * @method makePredByNodeName
  *
- * returns predicate which judge whether nodeName is same
+ * возвращает предикат, который определяет, является ли имя узла одинаковым
  *
  * @param {String} nodeName
  * @return {Function}
@@ -749,7 +749,7 @@ function nextPointUntil(point, pred) {
 }
 
 /**
- * returns whether point has character or not.
+ * возвращает, есть ли у точки символ или нет.
  *
  * @param {Point} point
  * @return {Boolean}
