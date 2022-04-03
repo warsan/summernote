@@ -33,7 +33,9 @@ title: Шаблон
 </html>
 ```
 
-<div id="summernote">Здравствуйте, Саммернот</div><br>
+<div id="summernote"><h3>Здравствуйте, Саммернот</h3></div><br>
+
+[![Редактировать на StackBlitz](https://raw.githubusercontent.com/warsan/gsap-react-route-anim-expro/master/but.svg)](https://stackblitz.com/edit/gsap-react-route-anim-expro)
 
 ### Установка и зависимости
 
