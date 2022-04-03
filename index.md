@@ -28,14 +28,14 @@ title: Шаблон
 <script src="../summernote.js"></script>
 </head>
 <body>
-<div id="summernote">Здравствуйте, Саммернот</div>
+<div id="summernote">Здравствуй, Саммернот</div>
 </body>
 </html>
 ```
 
-<div id="summernote"><h3>Здравствуйте, Саммернот</h3></div><br>
+<div id="summernote"><h3>Здравствуй, Саммернот</h3></div>
 
-[![Редактировать на StackBlitz](https://raw.githubusercontent.com/warsan/gsap-react-route-anim-expro/master/but.svg)](https://stackblitz.com/edit/gsap-react-route-anim-expro)
+[![Править на StackBlitz](https://raw.githubusercontent.com/warsan/summernote/gh-pages/but.svg)](https://stackblitz.com/edit/gsap-react-route-anim-expro)
 
 ### Установка и зависимости
 
@@ -75,8 +75,9 @@ Summernote построен на [jQuery](http://jquery.com/).
 
 <hr> 
 
-
 ## Добро пожаловать на GitHub Pages
+
+[![Править на StackBlitz](https://raw.githubusercontent.com/warsan/summernote/gh-pages/but.svg)](https://github.com/warsan/summernote/tree/gh-pages)
 
 Вы можете использовать [редактор на GitHub](https://github.com/warsan/summernote/edit/gh-pages/index.md) для ведения и предварительного просмотра содержимого вашего сайта в файлах Markdown.
 
