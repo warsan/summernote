@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Саммернот
+title: Шаблон
 ---
 <hr>
 
