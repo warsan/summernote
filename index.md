@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ведение блога как хакер
+title: Саммернот
 
 ---
 <hr>
@@ -33,6 +33,8 @@ title: Ведение блога как хакер
 </body>
 </html>
 ```
+
+<div id="summernote">Здравствуйте, Саммернот</div>
 
 ### Установка и зависимости
 
@@ -69,7 +71,8 @@ Summernote построен на [jQuery](http://jquery.com/).
 ```html
 <div id="summernote">Здравствуйте, Саммернот</div>
 ```
-<div id="summernote">Здравствуйте, Саммернот</div><hr> 
+
+<hr> 
 
 
 ## Добро пожаловать на GitHub Pages
