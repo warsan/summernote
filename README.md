@@ -41,5 +41,5 @@ Summernote построен на [jQuery](http://jquery.com/).
 Затем поместите тег `div` куда-нибудь в тег `body`. Этот элемент будет заменен редактором summernote.
 
 ```html
-<div id="summernote">Здравствуйте, Саммернот</div>
+<div id="summernote">Здравствуй, Саммернот</div>
 ```
