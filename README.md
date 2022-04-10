@@ -43,3 +43,4 @@ Summernote построен на [jQuery](http://jquery.com/).
 ```html
 <div id="summernote">Здравствуй, Саммернот</div>
 ```
+ 
