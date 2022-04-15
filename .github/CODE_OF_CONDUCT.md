@@ -1,8 +1,8 @@
 # Summernote's Contributor Code of Conduct
 
-## Our Pledge
+## Наше обещание
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
+В интересах создания открытой и доброжелательной среды мы, участники и сопровождающие, обязуемся сделать участие в нашем проекте и сообществе свободным от притеснений для всех, независимо от возраста, размера тела, инвалидности, этнической принадлежности, гендерной идентичности и самовыражения, уровня опыта, национальности, внешнего вида, расы, религии, сексуальной идентичности и ориентации.
 
 ## Our Standards
 

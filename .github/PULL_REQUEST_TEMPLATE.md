@@ -1,6 +1,6 @@
 <!--
-Thank you for taking the time to help us improve Summernote.
-Please be sure that you are not submitting changes made to the files in the `dist/` folder, and only to the files contained in the `src/` folder.
+Спасибо, что нашли время помочь нам улучшить Summernote.
+Пожалуйста, убедитесь, что вы не отправляете изменения, внесенные в файлы в папке `dist/`, а только в файлы, содержащиеся в папке `src/`.
 -->
 #### What does this PR do?
 

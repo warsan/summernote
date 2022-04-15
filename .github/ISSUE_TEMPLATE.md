@@ -1,10 +1,10 @@
-Before submitting an issue, please make sure to search for already open issues, and add to that, you can find already progressing or known issues or feature requests within the Projects tab.
-If your are duplicating an already open or issue closely related and that we think may also resolve your issue, we will reference you to that issue and close this one.
-This way we can track issues more easily, and try to keep issue information together.
+Прежде чем отправить проблему, пожалуйста, убедитесь, что вы нашли уже открытые проблемы, и, кроме того, вы можете найти уже выполняющиеся или известные проблемы или запросы функций на вкладке Проекты.
+Если вы дублируете уже открытый вопрос или вопрос, тесно связанный с вашим, который, по нашему мнению, также может решить вашу проблему, мы направим вас к этому вопросу и закроем этот.
+Так мы сможем легче отслеживать проблемы и стараться хранить информацию о них вместе.
 
-Thank you, and Thanks for using Summernote.
+Спасибо вам и спасибо за использование Summernote.
 
-This version of Summernote uses jQuery, if you are using a different version please refer to the relevant repositories below:-
+В этой версии Summernote используется jQuery, если вы используете другую версию, пожалуйста, обратитесь к соответствующим репозиториям ниже:-
 - [Angular](https://github.com/summernote/angular-summernote)
 - [dJango](https://github.com/summernote/django-summernote)
 - [Rails](https://github.com/summernote/summernote-rails)

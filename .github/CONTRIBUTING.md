@@ -1,39 +1,42 @@
-## Contributing
-* Pull requests are welcome
-* Please `don't include dist/* files` on your commits.
+## Вклад
+* Запросы на исправление приветствуются
+* Пожалуйста, `не включайте файлы dist/* в свои коммиты.
 
-## Coding convention
+## Соглашение о кодировании
 * eslint: https://eslint.org
 * eslint rule: https://github.com/summernote/summernote/blob/master/.eslintrc
 
 ## Build summernote
 
-Summernote uses [`yarn`](https://yarnpkg.com/) as a package manager.
+Summernote использует [`yarn`](https://yarnpkg.com/) в качестве менеджера пакетов.
 
 ```bash
 $ yarn install
 
-# build full version of summernote: dist/summernote.js
+# собрать полную версию summernote: dist/summernote.js
 $ yarn build
 
 ```
-At this point, you should now have a `dist/` directory populated with everything you need to use summernote.
+На данном этапе у вас должен быть каталог `dist/`, заполненный всем необходимым для работы с summernote.
 
-## Start local server for developing summernote.
-run local server with webpack-dev-server and watch.
+## Запустите локальный сервер для разработки Summernote.
+запустите локальный сервер с webpack-dev-server и наблюдайте.
+
 ```bash
 $ yarn dev
-# Open a browser on http://localhost:3000.
-# If you change source code, automatically reload your page.
+# Откройте браузер на сайте http://localhost:3000.
+# Если вы измените исходный код, автоматически перезагрузите страницу.
 ```
 
 ## Test summernote
-run tests with Karma and PhantomJS
+запускать тесты с помощью Karma и PhantomJS
+
 ```bash
 $ yarn test
 ```
-If you want run tests on other browser,
-change the values for `browsers` properties in `karma.conf.js`.
+
+Если вы хотите запустить тесты в другом браузере,
+изменить значения для свойств `browsers` в файле `karma.conf.js`.
 
 ```javascript
 karma: {
