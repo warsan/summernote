@@ -6,7 +6,7 @@ title: Ведение блога как хакер
 # summernote
 Супер простой редактор WYSIWYG
 
-[![Править на StackBlitz](https://raw.githubusercontent.com/warsan/gsap-react-route-anim-expro/master/but.svg)](https://stackblitz.com/edit/https://github.com/warsan/summernote)
+[![Правка на StackBlitz ⚡️](https://raw.githubusercontent.com/warsan/gsap-react-route-anim-expro/master/but.svg)](https://stackblitz.com/github/warsan/summernote)
 
 ### Установка и зависимости
 
