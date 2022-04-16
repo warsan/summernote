@@ -77,7 +77,7 @@ Summernote построен на [jQuery](http://jquery.com/).
 
 ## Добро пожаловать на GitHub Pages
 
-[![Править на StackBlitz](https://raw.githubusercontent.com/warsan/summernote/gh-pages/but.svg)](https://github.com/warsan/summernote/tree/gh-pages)
+[![Править на StackBlitz](but.svg)](https://stackblitz.com/github/warsan/summernote/tree/gh-pages)
 
 Вы можете использовать [редактор на GitHub](https://github.com/warsan/summernote/edit/gh-pages/index.md) для ведения и предварительного просмотра содержимого вашего сайта в файлах Markdown.
 
