@@ -35,7 +35,7 @@ title: Шаблон
 
 <div id="summernote"><h3>Здравствуй, Саммернот</h3></div>
 
-[![Править на StackBlitz](https://raw.githubusercontent.com/warsan/summernote/gh-pages/but.svg)](https://stackblitz.com/edit/gsap-react-route-anim-expro)
+[![Правка на StackBlitz ⚡️](but.svg)](https://stackblitz.com/github/warsan/summernote)
 
 ### Установка и зависимости
 
