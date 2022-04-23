@@ -33,6 +33,7 @@ title: Шаблон
 </html>
 ```
 
+
 <div id="summernote"><h3>Здравствуй, Саммернот</h3></div>
 
 [![Правка на StackBlitz ⚡️](but.svg)](https://stackblitz.com/github/warsan/summernote)
